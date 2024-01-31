@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "user.h": "c",
+        "mcu_driver.h": "c",
+        "motor_driver.h": "c",
+        "uart.h": "c",
+        "string.h": "c",
+        "common.h": "c",
+        "delay.h": "c",
+        "uart0.h": "c"
+    }
+}

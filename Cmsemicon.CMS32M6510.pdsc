@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Cmsemicon</vendor>
+  <name>CMS32M6510</name>
+  <description>Cmsemicon CMS32M6510 Device Family Pack</description>
+  <url>http://www.mcu.com.cn/pack/</url>
+
+  <releases>
+   <release version="0.5.6"  date="2023-04-21">
+      Add ACMP alignment API and fix some issues.
+   </release>
+   <release version="0.5.5"  date="2023-04-13">
+      Modified some issues.
+   </release>
+   <release version="0.5.4"  date="2023-03-27">
+      Add timer4 and other demo.
+   </release>
+   <release version="0.5.3"  date="2023-03-24">
+      Add IAR config.
+    </release>
+   <release version="0.5.2"  date="2023-03-15">
+      fixed some bugs.
+    </release>
+    <release version="0.5.0"  date="2023-01-08">
+      Change from ST driver.
+    </release>
+    <release version="0.4.0"  date="2022-10-10">
+      Add ADCLDO description.
+    </release>
+    <release version="0.3.0"  date="2022-10-08">
+      Add ADCLDO description.
+    </release>
+    <release version="0.2.0"  date="2022-09-28">
+      Add sample projects.
+    </release>
+    <release version="0.1.0"  date="2022-09-23">
+      Initial Version
+    </release>
+  </releases>
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>Cmsemicon</keyword>
+    <keyword>CMS32M6510</keyword>
+  </keywords>
+  <!-- devices section (mandatory for Device Family Packs) -->
+  <devices>
+    <family Dfamily="M0+ Series" Dvendor="Cmsemicon:161">
+      <!-- *************************  Sub Family 'CMS32M6510'  ***************************** -->
+      <subFamily DsubFamily="CMS32M6510">
+        <processor Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="64000000"/>
+        <description>
+          The CMS32M6510 device family contains an ARM Cortex-M0+ processor, running up to 64 MHz with a versatile set of on-chip peripherals.
+        </description>
+        <compile  header="Device/Include/CMS32M6510.h"/>
+        <algorithm  name="Flash/CMS32M6510_DataFlash.FLM"    start="0x00500000"  size="0x00600"     default="1"/>
+        <debug    svd="SVD/CMS32M6510.svd"/>
+        <feature 	type="VCC"              n="1.8" 	m="5.0"/>
+        <feature 	type="Temp"             n="-40"     	m="105"/>
+        <feature 	type="DMA"              n="24"     	name="Enhanced DMA"/>
+        <feature 	type="XTAL"             n="1000000"     m="20000000" 	name="External Crystal Oscillator"/>
+        <feature 	type="IntRC"            n="1000000"    m="32000000" 	name="Internal RC Oscillator with +/- 1% accuracy"/>
+        <feature 	type="RTC"              n="32768"                       name="Internal Real Time Clock(RTC)"/>
+        <feature 	type="WDT"              n="1"/>
+        <feature 	type="PowerMode"        n="3"                           name="Run, Sleep, Deep-Sleep"/>
+        <feature 	type="PowerOther"       n="1"                           name="POR"/>
+        <feature 	type="ADC"              n="15"          m="12"          name="High-Accuracy ADC"/>
+        <feature 	type="AnalogOther"      n="1"                           name="OPA"/>
+        <feature 	type="AnalogOther"      n="2"                           name="CMP"/>
+        <feature 	type="TempSens"         n="1"                           name="Temperature Sensor"/>
+        <feature 	type="I2C"              n="1"                           name="Full Function I2C"/>
+        <feature 	type="I2C"              n="6"                           name="Sample I2C"/>
+        <feature 	type="SPI"              n="1"                           name="4-wire SPI"/>
+        <feature 	type="SPI"              n="6"                           name="3-wire SPI"/>
+        <feature 	type="UART"             n="3"/>
+        <feature 	type="Timer"            n="8"           m="16"          name="General Purpose Timer (TIM8)"/>
+        <!-- *************************  Device 'CMS32M6510GE24SS'  ***************************** -->
+        <device Dname="CMS32M6510GE24SS">
+          <description>
+            Code Flash: 64KB,  Data Flash: 1.5KB,  RAM: 8KB
+            Package: 24-lead TSSOP (8.65x3.9mm, 0.635mm pitch)
+          </description>
+          <memory     name="IROM1"  access="rx"       start="0x00000000"  size="0x10000"     startup="1"   default="1"/>
+          <memory     name="IRAM1"  access="rw"       start="0x20000000"  size="0x02000"     init   ="0"   default="1"/>
+          <algorithm  name="Flash/CMS32M6510GE.FLM"    start="0x00000000"  size="0x10000"     default="1"/>
+        <feature    type="SOP"            n="24"                        name="8.65x3.9mm, 0.635mm pitch TSSOP"/>
+        </device>
+ 
+      </subFamily>
+    </family>
+  </devices>
+
+  <!-- examples section (optional for all Software Packs)-->
+  <examples>
+    <example name="Blinky" doc="README" folder="Examples/Blinky/MDK">
+      <description>Sample project</description>
+      <board name="CMS32M6510_EVB" vendor="Cmsemicon"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+     </attributes>
+    </example>
+  </examples>
+    
+  <!-- conditions section (optional for all Software Packs)-->
+  <conditions>
+    <condition id="CMS32M6510 CMSIS-CORE">
+      <!-- conditions selecting Devices -->
+      <description>Cmsemicon CMS32M6510 Series devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Cmsemicon:161" Dname="CMS32M6510*"/>
+    </condition>
+    <condition id="Startup ARM">
+      <description>Startup assembler file for ARMCC</description>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+  </conditions>
+  
+  <!-- component section (optional for all Software Packs)-->
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="CMS32M6510 CMSIS-CORE">
+      <description>System Startup for Cmsemicon CMS32M6510 Series</description>
+      <files>
+       <!--  include folder -->
+       <file category="include" name="Device/Include/"/>
+        <!-- <file category="header" name="Device/Source/userdefine.h"  attr="config" version="1.0.0"/> -->
+
+        <file category="source"  name="Device/Source/ARM/startup_CMS32M6510.s" attr="config" condition="Startup ARM" version="1.0.0"/>
+
+        <file category="source"  name="Device/Source/system_CMS32M6510.c"  attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="ISR" Cversion="1.0.0" condition="CMS32M6510 CMSIS-CORE">
+      <description>Interrupt Server Handler for Cmsemicon CMS32M6510 Series</description>
+      <files>
+        <!--  include folder -->
+        <file category="source"  name="Device/Source/isr_CMS32M6510.c"  attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+  </components>
+
+</package>

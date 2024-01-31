@@ -1,0 +1,644 @@
+Dependencies for Project 'cms32m65xx', Target 'CMS_MOTOR_CTRL': (DO NOT MODIFY !)
+F (..\code\head\0_user_h\para_define.h)(0x65B75960)()
+F (..\code\head\0_user_h\user_control.h)(0x65B89110)()
+F (..\code\source\0_user_s\user_control.c)(0x65B894F7)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\user_control.o --omf_browse .\objects\user_control.crf --depend .\objects\user_control.d)
+I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
+I (..\code\head\0_user_h\para_define.h)(0x65B75960)
+I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
+I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
+I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
+I (..\code\head\1_motlib_h\mc_pic.h)(0x63F86FE5)
+I (..\code\head\1_motlib_h\mc_ipd.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_math.h)(0x63A92EA8)
+I (..\code\head\1_motlib_h\mc_hall.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_deadcomp.h)(0x628F0E38)
+I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
+I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
+I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
+I (..\code\head\0_user_h\user.h)(0x65B4B811)
+I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
+I (..\code\head\0_user_h\softinit.h)(0x642158A6)
+I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+F (..\code\source\0_user_s\isr.c)(0x6426C5F2)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\isr.o --omf_browse .\objects\isr.crf --depend .\objects\isr.d)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+F (..\code\source\0_user_s\main.c)(0x65B4C32A)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
+I (..\code\head\0_user_h\para_define.h)(0x65B75960)
+I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
+I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
+I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
+I (..\code\head\1_motlib_h\mc_pic.h)(0x63F86FE5)
+I (..\code\head\1_motlib_h\mc_ipd.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_math.h)(0x63A92EA8)
+I (..\code\head\1_motlib_h\mc_hall.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_deadcomp.h)(0x628F0E38)
+I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
+I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
+I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
+I (..\code\head\0_user_h\user.h)(0x65B4B811)
+I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
+I (..\code\head\0_user_h\softinit.h)(0x642158A6)
+I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+F (..\code\source\0_user_s\interrupt.c)(0x65B4C2EF)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\interrupt.o --omf_browse .\objects\interrupt.crf --depend .\objects\interrupt.d)
+I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
+I (..\code\head\0_user_h\para_define.h)(0x65B75960)
+I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
+I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
+I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
+I (..\code\head\1_motlib_h\mc_pic.h)(0x63F86FE5)
+I (..\code\head\1_motlib_h\mc_ipd.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_math.h)(0x63A92EA8)
+I (..\code\head\1_motlib_h\mc_hall.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_deadcomp.h)(0x628F0E38)
+I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
+I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
+I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
+I (..\code\head\0_user_h\user.h)(0x65B4B811)
+I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
+I (..\code\head\0_user_h\softinit.h)(0x642158A6)
+I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+F (..\code\source\0_user_s\hardinit.c)(0x65B4A9CD)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\hardinit.o --omf_browse .\objects\hardinit.crf --depend .\objects\hardinit.d)
+I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
+I (..\code\head\0_user_h\para_define.h)(0x65B75960)
+I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
+I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
+I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
+I (..\code\head\1_motlib_h\mc_pic.h)(0x63F86FE5)
+I (..\code\head\1_motlib_h\mc_ipd.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_math.h)(0x63A92EA8)
+I (..\code\head\1_motlib_h\mc_hall.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_deadcomp.h)(0x628F0E38)
+I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
+I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
+I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
+I (..\code\head\0_user_h\user.h)(0x65B4B811)
+I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
+I (..\code\head\0_user_h\softinit.h)(0x642158A6)
+I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+F (..\code\source\0_user_s\softinit.c)(0x65B86B41)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\softinit.o --omf_browse .\objects\softinit.crf --depend .\objects\softinit.d)
+I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
+I (..\code\head\0_user_h\para_define.h)(0x65B75960)
+I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
+I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
+I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
+I (..\code\head\1_motlib_h\mc_pic.h)(0x63F86FE5)
+I (..\code\head\1_motlib_h\mc_ipd.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_math.h)(0x63A92EA8)
+I (..\code\head\1_motlib_h\mc_hall.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_deadcomp.h)(0x628F0E38)
+I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
+I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
+I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
+I (..\code\head\0_user_h\user.h)(0x65B4B811)
+I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
+I (..\code\head\0_user_h\softinit.h)(0x642158A6)
+I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+F (..\code\source\0_user_s\mc_ctrl.c)(0x65B4BC50)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\mc_ctrl.o --omf_browse .\objects\mc_ctrl.crf --depend .\objects\mc_ctrl.d)
+I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
+I (..\code\head\0_user_h\para_define.h)(0x65B75960)
+I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
+I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
+I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
+I (..\code\head\1_motlib_h\mc_pic.h)(0x63F86FE5)
+I (..\code\head\1_motlib_h\mc_ipd.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_math.h)(0x63A92EA8)
+I (..\code\head\1_motlib_h\mc_hall.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_deadcomp.h)(0x628F0E38)
+I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
+I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
+I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
+I (..\code\head\0_user_h\user.h)(0x65B4B811)
+I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
+I (..\code\head\0_user_h\softinit.h)(0x642158A6)
+I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+F (..\code\source\0_user_s\mc_foc.c)(0x65B0782C)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\mc_foc.o --omf_browse .\objects\mc_foc.crf --depend .\objects\mc_foc.d)
+I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
+I (..\code\head\0_user_h\para_define.h)(0x65B75960)
+I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
+I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
+I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
+I (..\code\head\1_motlib_h\mc_pic.h)(0x63F86FE5)
+I (..\code\head\1_motlib_h\mc_ipd.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_math.h)(0x63A92EA8)
+I (..\code\head\1_motlib_h\mc_hall.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_deadcomp.h)(0x628F0E38)
+I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
+I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
+I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
+I (..\code\head\0_user_h\user.h)(0x65B4B811)
+I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
+I (..\code\head\0_user_h\softinit.h)(0x642158A6)
+I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+F (..\code\source\0_user_s\uart0.c)(0x65B4BD6D)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\uart0.o --omf_browse .\objects\uart0.crf --depend .\objects\uart0.d)
+I (..\code\head\0_user_h\user.h)(0x65B4B811)
+I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\code\head\0_user_h\softinit.h)(0x642158A6)
+I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
+I (..\code\head\0_user_h\para_define.h)(0x65B75960)
+I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
+I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
+I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
+I (..\code\head\1_motlib_h\mc_pic.h)(0x63F86FE5)
+I (..\code\head\1_motlib_h\mc_ipd.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_math.h)(0x63A92EA8)
+I (..\code\head\1_motlib_h\mc_hall.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_deadcomp.h)(0x628F0E38)
+I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
+I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
+I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
+I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
+F (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)()
+F (..\code\source\1_motlib_s\CMS_65_FOCB_V220.lib)(0x64D5E7C8)()
+F (..\..\Driver\inc\acmp.h)(0x6441FA2F)()
+F (..\..\Driver\inc\adc.h)(0x65B1FB5B)()
+F (..\..\Driver\inc\adcldo.h)(0x6422ABE2)()
+F (..\..\Driver\inc\ccp.h)(0x63328888)()
+F (..\..\Driver\inc\cgc.h)(0x64360632)()
+F (..\..\Driver\inc\common.h)(0x635B4424)()
+F (..\..\Driver\inc\dac.h)(0x642FC1DC)()
+F (..\..\Driver\inc\delay.h)(0x63B94134)()
+F (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)()
+F (..\..\Driver\inc\epwm.h)(0x63329DC2)()
+F (..\..\Driver\inc\flash.h)(0x63B94134)()
+F (..\..\Driver\inc\gpio.h)(0x6435219A)()
+F (..\..\Driver\inc\i2c.h)(0x6333B994)()
+F (..\..\Driver\inc\lsitimer.h)(0x64336888)()
+F (..\..\Driver\inc\pcbz.h)(0x642E22BE)()
+F (..\..\Driver\inc\pga.h)(0x64364846)()
+F (..\..\Driver\inc\ssp.h)(0x641A6A28)()
+F (..\..\Driver\inc\timer.h)(0x64241440)()
+F (..\..\Driver\inc\timer4.h)(0x642E2150)()
+F (..\..\Driver\inc\uart.h)(0x64420112)()
+F (..\..\Driver\inc\wdt.h)(0x641A9DF6)()
+F (..\..\Driver\src\acmp.c)(0x6441F929)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\acmp.o --omf_browse .\objects\acmp.crf --depend .\objects\acmp.d)
+I (..\..\Driver\inc\acmp.h)(0x6441FA2F)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\adc.c)(0x64367D46)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\adc.o --omf_browse .\objects\adc.crf --depend .\objects\adc.d)
+I (..\..\Driver\inc\adc.h)(0x65B1FB5B)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\adcldo.c)(0x6422AEE4)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\adcldo.o --omf_browse .\objects\adcldo.crf --depend .\objects\adcldo.d)
+I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+F (..\..\Driver\src\ccp.c)(0x63329878)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\ccp.o --omf_browse .\objects\ccp.crf --depend .\objects\ccp.d)
+I (..\..\Driver\inc\ccp.h)(0x63328888)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\cgc.c)(0x64360506)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\cgc.o --omf_browse .\objects\cgc.crf --depend .\objects\cgc.d)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\dac.c)(0x642FC1DC)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\dac.o --omf_browse .\objects\dac.crf --depend .\objects\dac.d)
+I (..\..\Driver\inc\dac.h)(0x642FC1DC)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\delay.c)(0x63B94134)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (..\..\Driver\inc\delay.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\divsqrt.c)(0x6434FF3E)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\divsqrt.o --omf_browse .\objects\divsqrt.crf --depend .\objects\divsqrt.d)
+I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\epwm.c)(0x6423F3F6)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\epwm.o --omf_browse .\objects\epwm.crf --depend .\objects\epwm.d)
+I (..\..\Driver\inc\epwm.h)(0x63329DC2)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\flash.c)(0x63B94134)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\flash.o --omf_browse .\objects\flash.crf --depend .\objects\flash.d)
+I (..\..\Driver\inc\flash.h)(0x63B94134)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\gpio.c)(0x6441F04C)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+I (..\..\Driver\inc\gpio.h)(0x6435219A)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\i2c.c)(0x6333BEE2)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\i2c.o --omf_browse .\objects\i2c.crf --depend .\objects\i2c.d)
+I (..\..\Driver\inc\i2c.h)(0x6333B994)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\lsitimer.c)(0x64336BF6)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\lsitimer.o --omf_browse .\objects\lsitimer.crf --depend .\objects\lsitimer.d)
+I (..\..\Driver\inc\lsitimer.h)(0x64336888)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\pcbz.c)(0x63B94136)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\pcbz.o --omf_browse .\objects\pcbz.crf --depend .\objects\pcbz.d)
+I (..\..\Driver\inc\pcbz.h)(0x642E22BE)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\pga.c)(0x64364846)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\pga.o --omf_browse .\objects\pga.crf --depend .\objects\pga.d)
+I (..\..\Driver\inc\pga.h)(0x64364846)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\ssp.c)(0x64376790)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\ssp.o --omf_browse .\objects\ssp.crf --depend .\objects\ssp.d)
+I (..\..\Driver\inc\ssp.h)(0x641A6A28)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\timer.c)(0x64241440)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
+I (..\..\Driver\inc\timer.h)(0x64241440)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+F (..\..\Driver\src\timer4.c)(0x642E655C)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\timer4.o --omf_browse .\objects\timer4.crf --depend .\objects\timer4.d)
+I (..\..\Driver\inc\timer4.h)(0x642E2150)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\cgc.h)(0x64360632)
+F (..\..\Driver\src\uart.c)(0x644200F9)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
+I (..\..\Driver\inc\uart.h)(0x64420112)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+F (..\..\Driver\src\wdt.c)(0x6332CF68)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\wdt.o --omf_browse .\objects\wdt.crf --depend .\objects\wdt.d)
+I (..\..\Driver\inc\common.h)(0x635B4424)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
+I (..\..\Driver\inc\wdt.h)(0x641A9DF6)
+F (..\code\source\record.txt)(0x65B70BD9)()
+F (RTE\Device\CMS32M6510GE24SS\startup_CMS32M6510.s)(0x643D189D)(--cpu Cortex-M0+ -g --apcs=interwork -I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"--pd "__UVISION_VERSION SETA 525" --pd "_RTE_ SETA 1"--list .\listings\startup_cms32m6510.lst --xref -o .\objects\startup_cms32m6510.o --depend .\objects\startup_cms32m6510.d)
+F (RTE\Device\CMS32M6510GE24SS\system_CMS32M6510.c)(0x649D3513)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\system_cms32m6510.o --omf_browse .\objects\system_cms32m6510.crf --depend .\objects\system_cms32m6510.d)
+I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
+I (..\..\CMSIS\Include\core_cm0plus.h)(0x634511B0)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A5595E2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
+I (D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
+I (..\..\Device\Include\system_CMS32M6510.h)(0x634511B0)
