@@ -1,7 +1,7 @@
 Dependencies for Project 'cms32m65xx', Target 'CMS_MOTOR_CTRL': (DO NOT MODIFY !)
-F (..\code\head\0_user_h\para_define.h)(0x65B75960)()
-F (..\code\head\0_user_h\user_control.h)(0x65B89110)()
-F (..\code\source\0_user_s\user_control.c)(0x65B894F7)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\user_control.o --omf_browse .\objects\user_control.crf --depend .\objects\user_control.d)
+F (..\code\head\0_user_h\para_define.h)(0x65D2AF53)()
+F (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)()
+F (..\code\source\0_user_s\user_control.c)(0x65D2BCD9)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\user_control.o --omf_browse .\objects\user_control.crf --depend .\objects\user_control.d)
 I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
 I (..\..\Driver\inc\common.h)(0x635B4424)
 I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
@@ -26,8 +26,8 @@ I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
 I (..\..\Driver\inc\dac.h)(0x642FC1DC)
 I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
 I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
-I (..\code\head\0_user_h\para_define.h)(0x65B75960)
-I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\0_user_h\para_define.h)(0x65D2AF53)
+I (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)
 I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
 I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
 I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
@@ -40,12 +40,12 @@ I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
 I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
 I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
 I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
-I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65BA14C7)
 I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
 I (..\code\head\0_user_h\user.h)(0x65B4B811)
 I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
 I (..\code\head\0_user_h\softinit.h)(0x642158A6)
-I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\motor_control.h)(0x65D1D7EB)
 I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
 I (..\..\Driver\inc\delay.h)(0x63B94134)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
@@ -86,8 +86,8 @@ I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
 I (..\..\Driver\inc\dac.h)(0x642FC1DC)
 I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
 I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
-I (..\code\head\0_user_h\para_define.h)(0x65B75960)
-I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\0_user_h\para_define.h)(0x65D2AF53)
+I (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)
 I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
 I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
 I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
@@ -100,17 +100,17 @@ I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
 I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
 I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
 I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
-I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65BA14C7)
 I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
 I (..\code\head\0_user_h\user.h)(0x65B4B811)
 I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
 I (..\code\head\0_user_h\softinit.h)(0x642158A6)
-I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\motor_control.h)(0x65D1D7EB)
 I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
 I (..\..\Driver\inc\delay.h)(0x63B94134)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
-F (..\code\source\0_user_s\interrupt.c)(0x65B4C2EF)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\interrupt.o --omf_browse .\objects\interrupt.crf --depend .\objects\interrupt.d)
+F (..\code\source\0_user_s\interrupt.c)(0x65D1D96C)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\interrupt.o --omf_browse .\objects\interrupt.crf --depend .\objects\interrupt.d)
 I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
 I (..\..\Driver\inc\common.h)(0x635B4424)
 I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
@@ -135,8 +135,8 @@ I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
 I (..\..\Driver\inc\dac.h)(0x642FC1DC)
 I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
 I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
-I (..\code\head\0_user_h\para_define.h)(0x65B75960)
-I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\0_user_h\para_define.h)(0x65D2AF53)
+I (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)
 I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
 I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
 I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
@@ -149,12 +149,12 @@ I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
 I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
 I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
 I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
-I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65BA14C7)
 I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
 I (..\code\head\0_user_h\user.h)(0x65B4B811)
 I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
 I (..\code\head\0_user_h\softinit.h)(0x642158A6)
-I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\motor_control.h)(0x65D1D7EB)
 I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
 I (..\..\Driver\inc\delay.h)(0x63B94134)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
@@ -184,8 +184,8 @@ I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
 I (..\..\Driver\inc\dac.h)(0x642FC1DC)
 I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
 I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
-I (..\code\head\0_user_h\para_define.h)(0x65B75960)
-I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\0_user_h\para_define.h)(0x65D2AF53)
+I (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)
 I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
 I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
 I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
@@ -198,12 +198,12 @@ I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
 I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
 I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
 I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
-I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65BA14C7)
 I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
 I (..\code\head\0_user_h\user.h)(0x65B4B811)
 I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
 I (..\code\head\0_user_h\softinit.h)(0x642158A6)
-I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\motor_control.h)(0x65D1D7EB)
 I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
 I (..\..\Driver\inc\delay.h)(0x63B94134)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
@@ -233,8 +233,8 @@ I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
 I (..\..\Driver\inc\dac.h)(0x642FC1DC)
 I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
 I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
-I (..\code\head\0_user_h\para_define.h)(0x65B75960)
-I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\0_user_h\para_define.h)(0x65D2AF53)
+I (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)
 I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
 I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
 I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
@@ -247,17 +247,17 @@ I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
 I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
 I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
 I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
-I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65BA14C7)
 I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
 I (..\code\head\0_user_h\user.h)(0x65B4B811)
 I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
 I (..\code\head\0_user_h\softinit.h)(0x642158A6)
-I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\motor_control.h)(0x65D1D7EB)
 I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
 I (..\..\Driver\inc\delay.h)(0x63B94134)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
-F (..\code\source\0_user_s\mc_ctrl.c)(0x65B4BC50)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\mc_ctrl.o --omf_browse .\objects\mc_ctrl.crf --depend .\objects\mc_ctrl.d)
+F (..\code\source\0_user_s\mc_ctrl.c)(0x65D2B06D)(--c99 -c --cpu Cortex-M0+ -g -O2 -Otime --apcs=interwork --split_sections --enum_is_int -I ..\..\CMSIS\Include -I ..\..\Device\Include -I ..\..\Driver\inc -I ..\code\head\0_user_h -I ..\code\head\1_motlib_h-I.\RTE\_CMS_MOTOR_CTRL-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Cmsemicon\CMS32M6510\0.5.8\Device\Include"-D__UVISION_VERSION="525" -D_RTE_-o .\objects\mc_ctrl.o --omf_browse .\objects\mc_ctrl.crf --depend .\objects\mc_ctrl.d)
 I (..\code\head\0_user_h\mcu_driver.h)(0x645C56AD)
 I (..\..\Driver\inc\common.h)(0x635B4424)
 I (..\..\Device\Include\CMS32M6510.h)(0x6441F3C9)
@@ -282,8 +282,8 @@ I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
 I (..\..\Driver\inc\dac.h)(0x642FC1DC)
 I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
 I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
-I (..\code\head\0_user_h\para_define.h)(0x65B75960)
-I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\0_user_h\para_define.h)(0x65D2AF53)
+I (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)
 I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
 I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
 I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
@@ -296,12 +296,12 @@ I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
 I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
 I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
 I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
-I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65BA14C7)
 I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
 I (..\code\head\0_user_h\user.h)(0x65B4B811)
 I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
 I (..\code\head\0_user_h\softinit.h)(0x642158A6)
-I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\motor_control.h)(0x65D1D7EB)
 I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
 I (..\..\Driver\inc\delay.h)(0x63B94134)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
@@ -331,8 +331,8 @@ I (..\..\Driver\inc\divsqrt.h)(0x6434FF3E)
 I (..\..\Driver\inc\dac.h)(0x642FC1DC)
 I (..\..\Driver\inc\adcldo.h)(0x6422ABE2)
 I (..\code\head\1_motlib_h\motor_driver.h)(0x65B1D91B)
-I (..\code\head\0_user_h\para_define.h)(0x65B75960)
-I (..\code\head\0_user_h\user_control.h)(0x65B89110)
+I (..\code\head\0_user_h\para_define.h)(0x65D2AF53)
+I (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)
 I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
 I (..\code\head\1_motlib_h\mc_pmsm.h)(0x63F87023)
 I (..\code\head\1_motlib_h\mc_foc.h)(0x63F86F45)
@@ -345,12 +345,12 @@ I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
 I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
 I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
 I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
-I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65BA14C7)
 I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
 I (..\code\head\0_user_h\user.h)(0x65B4B811)
 I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
 I (..\code\head\0_user_h\softinit.h)(0x642158A6)
-I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\motor_control.h)(0x65D1D7EB)
 I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
 I (..\..\Driver\inc\delay.h)(0x63B94134)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
@@ -361,9 +361,9 @@ I (..\code\head\0_user_h\hardinit.h)(0x63A8FB8C)
 I (D:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
 I (..\code\head\0_user_h\softinit.h)(0x642158A6)
 I (..\code\head\1_motlib_h\base_define.h)(0x65B0785C)
-I (..\code\head\0_user_h\para_define.h)(0x65B75960)
-I (..\code\head\0_user_h\user_control.h)(0x65B89110)
-I (..\code\head\0_user_h\motor_control.h)(0x65B4BC40)
+I (..\code\head\0_user_h\para_define.h)(0x65D2AF53)
+I (..\code\head\0_user_h\user_control.h)(0x65D2ED1F)
+I (..\code\head\0_user_h\motor_control.h)(0x65D1D7EB)
 I (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)
 I (..\..\Driver\inc\delay.h)(0x63B94134)
 I (..\..\Driver\inc\common.h)(0x635B4424)
@@ -402,7 +402,7 @@ I (..\code\head\1_motlib_h\mc_wind.h)(0x64D5E75D)
 I (..\code\head\1_motlib_h\mc_single.h)(0x64D5E75C)
 I (..\code\head\1_motlib_h\mc_adaption.h)(0x65B1F743)
 I (..\code\head\1_motlib_h\mc_foc_ctr.h)(0x65B1F835)
-I (..\code\head\1_motlib_h\mc_openloop.h)(0x65B4CE13)
+I (..\code\head\1_motlib_h\mc_openloop.h)(0x65BA14C7)
 I (..\code\head\1_motlib_h\mc_bemf.h)(0x649A5450)
 F (..\code\head\0_user_h\uart0.h)(0x65B4BD5F)()
 F (..\code\source\1_motlib_s\CMS_65_FOCB_V220.lib)(0x64D5E7C8)()

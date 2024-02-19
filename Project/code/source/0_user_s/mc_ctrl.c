@@ -3,8 +3,8 @@
  *-----------------------------------------------------------------------------
  * @file    motro_control.c
  * @author  CMS Motor Control Team:lpj
- * @version µÚ¶ş´ú·ç»úÆ½Ì¨
- * @date    2023Äê2ÔÂ
+ * @version ç¬¬äºŒä»£é£æœºå¹³å°
+ * @date    2023å¹´2æœˆ
  * @brief
  *---------------------------------------------------------------------------//
  *****************************************************************************/
@@ -25,37 +25,37 @@
 //	Local variable  definitions
 //---------------------------------------------------------------------------/
 
-volatile SystStates SYSTEM_STATE = SYS_INIT; /* ÏµÍ³Á÷³Ì×´Ì¬»ú */
+volatile SystStates SYSTEM_STATE = SYS_INIT; /* ç³»ç»Ÿæµç¨‹çŠ¶æ€æœº */
 
-volatile MotorStates MOTOR_STATE = MC_INIT; /* µç»ú¿ØÖÆÁ÷³Ì×´Ì¬»ú */
+volatile MotorStates MOTOR_STATE = MC_INIT; /* ç”µæœºæ§åˆ¶æµç¨‹çŠ¶æ€æœº */
 
-volatile Union_Fault u_Fault_Flag = {0}; /* µç»ú¹ÊÕÏÖ¸Ê¾±êÖ¾ */
+volatile Union_Fault u_Fault_Flag = {0}; /* ç”µæœºæ•…éšœæŒ‡ç¤ºæ ‡å¿— */
 
-volatile FaultCode MOTOR_FAULT_CODE = NOERROR; /* µç»ú¹ÊÕÏÖ¸Ê¾±êÖ¾ */
+volatile FaultCode MOTOR_FAULT_CODE = NOERROR; /* ç”µæœºæ•…éšœæŒ‡ç¤ºæ ‡å¿— */
 
-struct_Basic_Para Basic = {0}; /* »ù±¾²ÎÊı½á¹¹Ìå */
+struct_Basic_Para Basic = {0}; /* åŸºæœ¬å‚æ•°ç»“æ„ä½“ */
 
-struct_Falg Flag = {0}; /* ±êÖ¾Î»½á¹¹Ìå */
+struct_Falg Flag = {0}; /* æ ‡å¿—ä½ç»“æ„ä½“ */
 
-struct_Time Time = {0}; /* Ê±¼ä¼ÆÊı½á¹¹Ìå */
+struct_Time Time = {0}; /* æ—¶é—´è®¡æ•°ç»“æ„ä½“ */
 
-struct_Count Count = {0}; /* ÊıÑ§¼ÆÊı½á¹¹Ìå */
+struct_Count Count = {0}; /* æ•°å­¦è®¡æ•°ç»“æ„ä½“ */
 
-struct_Fault Fault = {0}; /* ¹ÊÕÏ²ÎÊı½á¹¹Ìå */
+struct_Fault Fault = {0}; /* æ•…éšœå‚æ•°ç»“æ„ä½“ */
 
-struct_MotCtrl_Para Para = {0}; /* µç»ú¿ØÖÆ²ÎÊı½á¹¹Ìå */
+struct_MotCtrl_Para Para = {0}; /* ç”µæœºæ§åˆ¶å‚æ•°ç»“æ„ä½“ */
 
-struct_Config Config = {0}; /* ÏµÍ³ÅäÖÃÑ¡Ïî½á¹¹Ìå */
+struct_Config Config = {0}; /* ç³»ç»Ÿé…ç½®é€‰é¡¹ç»“æ„ä½“ */
 
-struct_Base_Value stru_base_value = {0}; /* µç»ú»ùÖµ²ÎÊı½á¹¹Ìå */
+struct_Base_Value stru_base_value = {0}; /* ç”µæœºåŸºå€¼å‚æ•°ç»“æ„ä½“ */
 
-struct_ADC_Sample stru_Sample = {0}; /* ²ÉÑù²ÎÊı½á¹¹Ìå */
+struct_ADC_Sample stru_Sample = {0}; /* é‡‡æ ·å‚æ•°ç»“æ„ä½“ */
 
-struct_FOC_Ctrl stru_FOC = {0}; /* FOC¿ØÖÆ²ÎÊı½á¹¹Ìå */
+struct_FOC_Ctrl stru_FOC = {0}; /* FOCæ§åˆ¶å‚æ•°ç»“æ„ä½“ */
 
-struct_SpeedRamp stru_Speed_Ctrl = {0}; /* ËÙ¶È¿ØÖÆ½á¹¹Ìå */
+struct_SpeedRamp stru_Speed_Ctrl = {0}; /* é€Ÿåº¦æ§åˆ¶ç»“æ„ä½“ */
 
-struct_MotorRuning Motor_Actual = {0}; /* µç»úÊµ¼Ê·´À¡²ÎÊı */
+struct_MotorRuning Motor_Actual = {0}; /* ç”µæœºå®é™…åé¦ˆå‚æ•° */
 
 //---------------------------------------------------------------------------/
 //	Global variable definitions(declared in header file with 'extern')
@@ -80,21 +80,21 @@ struct_MotorRuning Motor_Actual = {0}; /* µç»úÊµ¼Ê·´À¡²ÎÊı */
  ******************************************************************************/
 
 //===========================================================================/
-// µç»úÔËĞĞÊ¹ÄÜ
+// ç”µæœºè¿è¡Œä½¿èƒ½
 void User_Motor_On(void)
 {
 	Flag.MC_RunStop = 1;
 }
 
 //===========================================================================/
-// µç»úÍ£Ö¹
+// ç”µæœºåœæ­¢
 void User_Motor_Off(void)
 {
 	Flag.MC_RunStop = 0;
 }
 
 //===========================================================================/
-// µç»ú·½Ïò¿ØÖÆ
+// ç”µæœºæ–¹å‘æ§åˆ¶
 void User_Motor_FRControl(uint8_t Input_Val)
 {
 	if (Input_Val == FR_CW)
@@ -104,11 +104,11 @@ void User_Motor_FRControl(uint8_t Input_Val)
 }
 
 //===========================================================================/
-// µ÷ËÙ¿ØÖÆ
+// è°ƒé€Ÿæ§åˆ¶
 void User_MotorSpeed_Set(int32_t Input_Val)
 {
 //-----------------------------------------------------------------------/
-// µçÁ÷»·¿ØÖÆ£¬¸ø¶¨Öµ/32767 = ¸ø¶¨µçÁ÷/×î´óµçÁ÷--ÏàµçÁ÷·åÖµ
+// ç”µæµç¯æ§åˆ¶ï¼Œç»™å®šå€¼/32767 = ç»™å®šç”µæµ/æœ€å¤§ç”µæµ--ç›¸ç”µæµå³°å€¼
 #if (Config_Contorl_Mode == Current_Loop)
 
 	if (Input_Val > stru_FOC.Curr_Iq_Max)
@@ -118,7 +118,7 @@ void User_MotorSpeed_Set(int32_t Input_Val)
 #endif
 
 //-----------------------------------------------------------------------/
-// ËÙ¶È»·¿ØÖÆ
+// é€Ÿåº¦ç¯æ§åˆ¶
 #if (Config_Contorl_Mode == Speed_Loop)
 
 #if (LIMIT_SPEED_ENABLE)
@@ -126,22 +126,22 @@ void User_MotorSpeed_Set(int32_t Input_Val)
 		Input_Val = (int32_t)LIMIT_SPEED_VALUE;
 #endif
 
-	stru_FOC.Speed_Ref = FRACMPY_Q10(Input_Val, stru_Sample.G_Sp);
-
+	// stru_FOC.Speed_Ref = FRACMPY_Q10(Input_Val, stru_Sample.G_Sp);
+	stru_FOC.Speed_Ref = Input_Val;
 #endif
 
 //-----------------------------------------------------------------------/
-// ¹¦ÂÊ»·¿ØÖÆ
+// åŠŸç‡ç¯æ§åˆ¶
 #if (Config_Contorl_Mode == Power_Loop)
 
-// Ö±½Ó¸ø¶¨¹¦ÂÊÖµ
+// ç›´æ¥ç»™å®šåŠŸç‡å€¼
 #if 1
 	if (Input_Val > (int32_t)MOTOR_POWER_BASE)
 		Input_Val = (int32_t)MOTOR_POWER_BASE;
 
 	stru_FOC.Speed_Ref = (int32_t)(Input_Val * stru_Sample.G_Pw) >> 6;
 
-// °´ÕÕµ÷ËÙĞÅºÅ±ÈÀı¸ø¶¨
+// æŒ‰ç…§è°ƒé€Ÿä¿¡å·æ¯”ä¾‹ç»™å®š
 #else
 
 	stru_FOC.Speed_Ref = Input_Val;
@@ -153,7 +153,7 @@ void User_MotorSpeed_Set(int32_t Input_Val)
 }
 
 //===========================================================================/
-// ¹Ø±ÕËùÓĞ¹¦ÄÜÄ£¿é
+// å…³é—­æ‰€æœ‰åŠŸèƒ½æ¨¡å—
 void System_Modules_off(void)
 {
 	Brige_Output_Off();
@@ -161,10 +161,10 @@ void System_Modules_off(void)
 }
 
 //===========================================================================/
-// EPWM¹ÊÕÏÉ²³µ±£»¤ÖØÆô
+// EPWMæ•…éšœåˆ¹è½¦ä¿æŠ¤é‡å¯
 void EPWM_ResetFaultBrake(void)
 {
-	EPWM_ClearBrakeIntFlag(); /// Çå³ıÉ²³µÖĞ¶Ï±êÖ¾Î»
+	EPWM_ClearBrakeIntFlag(); /// æ¸…é™¤åˆ¹è½¦ä¸­æ–­æ ‡å¿—ä½
 	EPWM_ClearBrake();
 	EPWM_Start(EPWM_CH_0_MSK | EPWM_CH_1_MSK | EPWM_CH_2_MSK | EPWM_CH_3_MSK | EPWM_CH_4_MSK | EPWM_CH_5_MSK);
 }
@@ -174,8 +174,8 @@ void EPWM_ResetFaultBrake(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : System_Control
- * Description    : ÏµÍ³×´Ì¬»úÁ÷³Ì¿ØÖÆ
- * Function Call  : Ö÷Ñ­»·µ÷ÓÃ
+ * Description    : ç³»ç»ŸçŠ¶æ€æœºæµç¨‹æ§åˆ¶
+ * Function Call  : ä¸»å¾ªç¯è°ƒç”¨
  * Input Paragram :
  * Return Value   :
  *-----------------------------------------------------------------------------
@@ -185,23 +185,23 @@ void System_Control(void)
 	switch (SYSTEM_STATE)
 	{
 	//===================================================================//
-	// ÏµÍ³³õÊ¼»¯
+	// ç³»ç»Ÿåˆå§‹åŒ–
 	case SYS_INIT:
 	{
 		DelayTime_ms(20);
-		// µç»úÉÏµç»ñÈ¡ADCÆ«ÖÃÖµ(ÏàµçÁ÷Æ«ÖÃÖµ)
+		// ç”µæœºä¸Šç”µè·å–ADCåç½®å€¼(ç›¸ç”µæµåç½®å€¼)
 		GET_ADC_REF_VAL();
-		// FOC¿ØÖÆ²ÎÊı³õÊ¼»¯
+		// FOCæ§åˆ¶å‚æ•°åˆå§‹åŒ–
 		FOC_ControlPara_Init();
-		// »ùÖµ²ÎÊı³õÊ¼»¯
+		// åŸºå€¼å‚æ•°åˆå§‹åŒ–
 		FOC_BaseParameter_Init();
-		// ¹ÊÕÏÇåÁã£¬·ÀÖ¹ÉÏµçÎó¶¯×÷
+		// æ•…éšœæ¸…é›¶ï¼Œé˜²æ­¢ä¸Šç”µè¯¯åŠ¨ä½œ
 		EPWM_ResetFaultBrake();
 
 #if (Motor_Debug_Mode == Motor_Debug_Online)
 		//		DBG->DBGSTOPCR |= (0<<24);
 #else
-		// ½ûÓÃSWOµ÷ÊÔ½Ó¿Ú¹¦ÄÜ (¸´ÓÃÉÕÂ¼¿ÚÏßĞèÒª´ò¿ª)
+		// ç¦ç”¨SWOè°ƒè¯•æ¥å£åŠŸèƒ½ (å¤ç”¨çƒ§å½•å£çº¿éœ€è¦æ‰“å¼€)
 		//		DBG->DBGSTOPCR |= (1<<24);
 #endif
 		SYSTEM_STATE = SYS_RUN;
@@ -209,18 +209,18 @@ void System_Control(void)
 		break;
 	}
 	//===================================================================//
-	// ÏµÍ³Õı³£¹¤×÷×´Ì¬
+	// ç³»ç»Ÿæ­£å¸¸å·¥ä½œçŠ¶æ€
 	case SYS_RUN:
 	{
-		// Âí´ïµ÷ËÙ¿ØÖÆ
+		// é©¬è¾¾è°ƒé€Ÿæ§åˆ¶
 		if (Time.Motor_Restart == 0)
 		{
-			// ¹ÊÕÏ±£»¤Ê±Âí´ï¹Ø»ú
+			// æ•…éšœä¿æŠ¤æ—¶é©¬è¾¾å…³æœº
 			if (MOTOR_FAULT_CODE || Fault_Flag)
 			{
 				User_Motor_Off();
 			}
-			// ½øÈëµ÷ËÙ¿ØÖÆ
+			// è¿›å…¥è°ƒé€Ÿæ§åˆ¶
 			else
 			{
 				User_Speed_Control();
@@ -229,14 +229,14 @@ void System_Control(void)
 		break;
 	}
 	//===================================================================//
-	// Âí´ïÖØÆô×´Ì¬
+	// é©¬è¾¾é‡å¯çŠ¶æ€
 	case SYS_RESTART:
 	{
-		// Âí´ï¹Ø»ú
+		// é©¬è¾¾å…³æœº
 		User_Motor_Off();
-		// ÖØÆô¼ä¸ôÊ±¼ä
+		// é‡å¯é—´éš”æ—¶é—´
 		Time.Motor_Restart = (uint32_t)((float)FAULT_RESTART_DELAY_TIME * 1000);
-		// Æô¶¯Ê§°ÜÔÊĞíÖØÆô´ÎÊı
+		// å¯åŠ¨å¤±è´¥å…è®¸é‡å¯æ¬¡æ•°
 		if (++Count.Motor_Restart >= ((uint32_t)FAULT_RESTART_TIMES + 1))
 		{
 			Count.Motor_Restart = (uint32_t)FAULT_RESTART_TIMES + 1;
@@ -248,39 +248,39 @@ void System_Control(void)
 			MOTOR_FAULT_CODE = NOERROR;
 			SYSTEM_STATE = SYS_RUN;
 		}
-		// Âí´ïÉèÖÃÎª´ı»ú×´Ì¬
+		// é©¬è¾¾è®¾ç½®ä¸ºå¾…æœºçŠ¶æ€
 		MOTOR_STATE = MC_INIT;
 
 		break;
 	}
 	//===================================================================//
-	// ¹ÊÕÏÍ£»úÌ¬
+	// æ•…éšœåœæœºæ€
 	case SYS_FAULT:
 	{
-		// Âí´ï¹Ø»ú
+		// é©¬è¾¾å…³æœº
 		User_Motor_Off();
 		Time.Motor_Restart = 0;
 		SYSTEM_STATE = SYS_WAIT;
 
-		// Âí´ïÉèÖÃÎª´ı»ú×´Ì¬
+		// é©¬è¾¾è®¾ç½®ä¸ºå¾…æœºçŠ¶æ€
 		MOTOR_STATE = MC_INIT;
 
 		break;
 	}
 	//===================================================================//
-	// µÈ´ı¹ÊÕÏ±£»¤»Ö¸´
+	// ç­‰å¾…æ•…éšœä¿æŠ¤æ¢å¤
 	case SYS_WAIT:
 	{
-		// ÏµÍ³¹Ø»ú
+		// ç³»ç»Ÿå…³æœº
 		System_Modules_off();
-		// ÔÊĞíµ÷ËÙĞÅºÅ¸´Î»ÖØÆô
+		// å…è®¸è°ƒé€Ÿä¿¡å·å¤ä½é‡å¯
 		if ((Capture.Frequency == 0) && (Capture.DutyCycle == 0))
 		{
-			// Çå³ı¹ÊÕÏĞÅÏ¢
+			// æ¸…é™¤æ•…éšœä¿¡æ¯
 			//				EPWM_ResetFaultBrake();
 			//				MC_Clear_FaultMessage();
 			//				Count.Motor_Restart = 0;
-			//				//ÏµÍ³»Ö¸´Õı³£×´Ì¬
+			//				//ç³»ç»Ÿæ¢å¤æ­£å¸¸çŠ¶æ€
 			//				SYSTEM_STATE = SYS_RUN;
 		}
 		break;
@@ -295,7 +295,7 @@ void System_Control(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : MC_PhaseLoss_Check
- * Description    : È±Ïà±£»¤¹¦ÄÜ
+ * Description    : ç¼ºç›¸ä¿æŠ¤åŠŸèƒ½
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -312,7 +312,7 @@ void MC_PhaseLoss_Check(void)
 		{
 			bPhaseLossCount = 40;
 			//-------------------------------------------------------------------------------------/
-			// AÏàµçÁ÷ÅĞ¶Ï
+			// Aç›¸ç”µæµåˆ¤æ–­
 			if (((Fault.Ia_max > Fault.Ib_max * 2) || (Fault.Ia_max > Fault.Ic_max * 2)) && (Fault.Ia_max > Fault.Phaseloss_Value))
 			{
 				Fault.PhaseA_LossCnt++;
@@ -322,7 +322,7 @@ void MC_PhaseLoss_Check(void)
 				Fault.PhaseA_LossCnt = 0;
 			}
 			//-------------------------------------------------------------------------------------/
-			// BÏàµçÁ÷ÅĞ¶Ï
+			// Bç›¸ç”µæµåˆ¤æ–­
 			if (((Fault.Ib_max > Fault.Ia_max * 2) || (Fault.Ib_max > Fault.Ic_max * 2)) && (Fault.Ib_max > Fault.Phaseloss_Value))
 			{
 				Fault.PhaseB_LossCnt++;
@@ -332,7 +332,7 @@ void MC_PhaseLoss_Check(void)
 				Fault.PhaseB_LossCnt = 0;
 			}
 			//-------------------------------------------------------------------------------------/
-			// CÏàµçÁ÷ÅĞ¶Ï
+			// Cç›¸ç”µæµåˆ¤æ–­
 			if (((Fault.Ic_max > Fault.Ia_max * 2) || (Fault.Ic_max > Fault.Ib_max * 2)) && (Fault.Ic_max > Fault.Phaseloss_Value))
 			{
 				Fault.PhaseC_LossCnt++;
@@ -378,7 +378,7 @@ void MC_PhaseLoss_Check(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : MC_MotorBlock_Check
- * Description    : ¶Â×ª±£»¤¹¦ÄÜ
+ * Description    : å µè½¬ä¿æŠ¤åŠŸèƒ½
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -389,7 +389,7 @@ void MC_MotorBlock_Check(void)
 	static uint16_t hBlockCount = 0;
 
 	//-------------------------------------------------------------------------/
-	// ×ªËÙ³¬¹ıÉè¶¨µÄ×ªËÙ·¶Î§ÈÏÎª¶Â×ª±£»¤
+	// è½¬é€Ÿè¶…è¿‡è®¾å®šçš„è½¬é€ŸèŒƒå›´è®¤ä¸ºå µè½¬ä¿æŠ¤
 	if ((MOTOR_STATE == MC_SW) || (MOTOR_STATE == MC_RUN))
 	{
 		if ((Basic.Mech_Speed < FAULT_SPEED_MIN) || (Basic.Mech_Speed > FAULT_SPEED_MAX) ||
@@ -424,7 +424,7 @@ void MC_MotorBlock_Check(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : MC_Voltage_Check
- * Description    : µçÑ¹±£»¤¹¦ÄÜ
+ * Description    : ç”µå‹ä¿æŠ¤åŠŸèƒ½
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -438,7 +438,7 @@ void MC_Voltage_Check(void)
 	{
 		if (Basic.Vbus_Check > Fault.StartOverVoltage_Value)
 		{
-			// Æô¶¯¹ıÑ¹±£»¤
+			// å¯åŠ¨è¿‡å‹ä¿æŠ¤
 			if (++hFaultStartOverCount > FAULT_START_OVER_VBUS_TIME)
 			{
 				hFaultStartOverCount = 0;
@@ -452,7 +452,7 @@ void MC_Voltage_Check(void)
 		}
 		else if (Basic.Vbus_Check < Fault.StartLowerVoltage_Value)
 		{
-			// Æô¶¯Ç·Ñ¹±£»¤
+			// å¯åŠ¨æ¬ å‹ä¿æŠ¤
 			if (++hFaultStartLowerCount > FAULT_START_LOWER_VBUS_TIME)
 			{
 				hFaultStartLowerCount = 0;
@@ -468,7 +468,7 @@ void MC_Voltage_Check(void)
 		{
 			hFaultStartOverCount = 0;
 			hFaultStartLowerCount = 0;
-			// ¹ıÇ·Ñ¹±£»¤»Ö¸´
+			// è¿‡æ¬ å‹ä¿æŠ¤æ¢å¤
 			if (Basic.Vbus_Check >= Fault.UV_Recover_Value && Basic.Vbus_Check <= Fault.OV_Recover_Value)
 			{
 				if (++hFaultRecoverCount > FAULT_RECOVER_VBUS_TIME)
@@ -508,7 +508,7 @@ void MC_Voltage_Check(void)
 	{
 		if (Basic.Vbus_Check > Fault.RunOverVoltage_Value)
 		{
-			// ÔËĞĞ¹ıÑ¹±£»¤
+			// è¿è¡Œè¿‡å‹ä¿æŠ¤
 			if (++hFaultOverCount > FAULT_RUN_OVER_VBUS_TIME)
 			{
 				hFaultOverCount = 0;
@@ -520,7 +520,7 @@ void MC_Voltage_Check(void)
 		}
 		else if (Basic.Vbus_Check < Fault.RunLowerVoltage_Value)
 		{
-			// ÔËĞĞÇ·Ñ¹±£»¤
+			// è¿è¡Œæ¬ å‹ä¿æŠ¤
 			if (++hFaultLowerCount > FAULT_RUN_LOWER_VBUS_TIME)
 			{
 				hFaultLowerCount = 0;
@@ -548,7 +548,7 @@ void MC_Voltage_Check(void)
  **
  ** \param [in] none
  ** \return  none
- ** \note	Ä¸Ïß¹ıÁ÷¼ì²â
+ ** \note	æ¯çº¿è¿‡æµæ£€æµ‹
  *****************************************************************************/
 void MC_IBUS_Check(void)
 {
@@ -558,7 +558,7 @@ void MC_IBUS_Check(void)
 	{
 		if (Motor_Actual.Ibus > FAULT_OVER_IBUS * 100)
 		{
-			if (++hOverIbusCount > FAULT_OVER_IBUS_TIME) // ´óÓÚ500ms±£»¤
+			if (++hOverIbusCount > FAULT_OVER_IBUS_TIME) // å¤§äº500msä¿æŠ¤
 			{
 				hOverIbusCount = 0;
 				Fault_OverCurrent = 1;
@@ -585,12 +585,12 @@ void MC_IBUS_Check(void)
  **
  ** \param [in] none
  ** \return  none
- ** \note	NTCÎÂ¶È¼ì²â
+ ** \note	NTCæ¸©åº¦æ£€æµ‹
  *****************************************************************************/
 void MC_Temperature_Check(void)
 {
 	static uint16_t hOverTemperatureCount = 0, hLowerTemperatureCount = 0, hRechOverTemperatureCount = 0;
-	// µÍÎÂ±£»¤
+	// ä½æ¸©ä¿æŠ¤
 	if (Basic.VTem > Fault.Lower_Temperature_Value)
 	{
 		if (++hLowerTemperatureCount > FAULT_LOWER_TEMPERATURE_TIME)
@@ -601,7 +601,7 @@ void MC_Temperature_Check(void)
 			SYSTEM_STATE = SYS_FAULT;
 		}
 	}
-	// ¹ıÎÂ±£»¤
+	// è¿‡æ¸©ä¿æŠ¤
 	else if (Basic.VTem < Fault.Over_Temperature_Value)
 	{
 		if (++hOverTemperatureCount > FAULT_OVER_TEMPERATURE_TIME)
@@ -616,7 +616,7 @@ void MC_Temperature_Check(void)
 	{
 		hLowerTemperatureCount = 0;
 		hOverTemperatureCount = 0;
-		// NTC±£»¤»Ö¸´
+		// NTCä¿æŠ¤æ¢å¤
 		if (Basic.VTem >= Fault.Over_Temperature_Recover_Value && Basic.VTem <= Fault.Lower_Temperature_Recover_Value)
 		{
 			if (++hRechOverTemperatureCount > FAULT_RECOVER_TEMPERATURE_TIME)
@@ -642,7 +642,7 @@ void MC_Temperature_Check(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : MC_MotorFault_Check
- * Description    : µç»ú¹ÊÕÏ±£»¤¼ì²â
+ * Description    : ç”µæœºæ•…éšœä¿æŠ¤æ£€æµ‹
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -651,31 +651,31 @@ void MC_Temperature_Check(void)
 void MC_MotorFault_Check(void)
 {
 //------------------------------------------------------------------------/
-// È±Ïà¼ì²â
+// ç¼ºç›¸æ£€æµ‹
 #if (FAULT_PHASELOSS_ENABLE)
 	MC_PhaseLoss_Check();
 #endif
 
 //------------------------------------------------------------------------/
-// ¶Â×ª¼ì²â
+// å µè½¬æ£€æµ‹
 #if (FAULT_BLOCK_ENABLE)
 	MC_MotorBlock_Check();
 #endif
 
 //------------------------------------------------------------------------/
-// µçÑ¹¼ì²â
+// ç”µå‹æ£€æµ‹
 #if (FAULT_VOLTAGE_ENABLE)
 	MC_Voltage_Check();
 #endif
 
 //------------------------------------------------------------------------/
-// Ä¸Ïß¾ùÖµµçÁ÷¼ì²â
+// æ¯çº¿å‡å€¼ç”µæµæ£€æµ‹
 #if (FAULT_AVERAGE_CURRENT_ENABLE)
 	MC_IBUS_Check();
 #endif
 
 //------------------------------------------------------------------------/
-// Ä£¿éNTCÎÂ¶È¼ì²â
+// æ¨¡å—NTCæ¸©åº¦æ£€æµ‹
 #if (FAULT_TEMPERATURE_ENABLE)
 	MC_Temperature_Check();
 #endif
@@ -684,7 +684,7 @@ void MC_MotorFault_Check(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : MC_MotorSpeed_Calc
- * Description    : µç»ú×ªËÙ¼ÆËã
+ * Description    : ç”µæœºè½¬é€Ÿè®¡ç®—
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -692,23 +692,23 @@ void MC_MotorFault_Check(void)
  ******************************************************************************/
 void MC_MotorSpeed_Calc(void)
 {
-	// ¼ÆËãµç»ú×ªËÙ
+	// è®¡ç®—ç”µæœºè½¬é€Ÿ
 	Basic.Mech_Speed = (stru_FOC.Elec_We * Basic.Speed_Base) / (Basic.We * Basic.ERAMP);
 
-	// FGÊä³ö×ªËÙ
+	// FGè¾“å‡ºè½¬é€Ÿ
 	Basic.FG_Speed = Basic.Mech_Speed + SPEED_OFFSET;
 
-	// ×ªËÙ±ê¶¨Öµ¼ÆËã£¬ÓÃÓÚËÙ¶È»·
+	// è½¬é€Ÿæ ‡å®šå€¼è®¡ç®—ï¼Œç”¨äºé€Ÿåº¦ç¯
 	Basic.Calb_Speed = FRACMPY_Q10(Basic.Mech_Speed, stru_Sample.G_Sp);
 
-	// ¼ÆËã·´µç¶¯ÊÆËÙ¶È
+	// è®¡ç®—åç”µåŠ¨åŠ¿é€Ÿåº¦
 	stru_bemf.Speed = (stru_bemf.DeltaTheta * Basic.Speed_Base) / Basic.We;
 }
 
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : MC_Clear_FaultMessage
- * Description    : Çå³ı¹ÊÕÏĞÅÏ¢
+ * Description    : æ¸…é™¤æ•…éšœä¿¡æ¯
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -731,7 +731,7 @@ void MC_Clear_FaultMessage(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : ADC0_CALB
- * Description    : ADC0Í¨µÀ²ÉÑù
+ * Description    : ADC0é€šé“é‡‡æ ·
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -740,62 +740,62 @@ void MC_Clear_FaultMessage(void)
 void ADC_Sample(void)
 {
 	//----------------------------------------------------------------------/
-	// ÊäÈëµçÑ¹²ÉÑù
+	// è¾“å…¥ç”µå‹é‡‡æ ·
 	stru_Sample.ADVal[CH_VBUS] = (uint32_t)ADC->DATA[ADC_DATA_VBUS];
-	// ÊäÈëµçÁ÷²ÉÑù
+	// è¾“å…¥ç”µæµé‡‡æ ·
 	stru_Sample.ADVal[CH_IBUS] = (uint32_t)ADC->DATA[ADC_DATA_IBUS];
-	// NTCÎÂ¶È²ÉÑù
+	// NTCæ¸©åº¦é‡‡æ ·
 	stru_Sample.ADVal[CH_TEMP] = (uint32_t)ADC->DATA[ADC_DATA_TEMP];
-	// µ÷ËÙµçÑ¹²ÉÑù
+	// è°ƒé€Ÿç”µå‹é‡‡æ ·
 	stru_Sample.ADVal[CH_VCTR] = (uint32_t)ADC->DATA[ADC_DATA_CTRL];
 
 //----------------------------------------------------------------------/
-// Bandgap Ğ£Õı²ÉÑùÖµ
+// Bandgap æ ¡æ­£é‡‡æ ·å€¼
 #if (CONFIG_BANDGAP_MODE == BANDGAP_ENABLE)
 	int32_t Aux;
 
-	// ¼ÆËãµ÷ËÙµçÑ¹
+	// è®¡ç®—è°ƒé€Ÿç”µå‹
 	Aux = FRACMPY_Q10((stru_Sample.ADVal[CH_VCTR] - stru_Sample.REF[CH_VCTR]), stru_Sample.G_Vc);
 	stru_Sample.ARR[CH_VCTR] = FRACMPY_Q12(Aux, stru_Sample.G_BG);
-	// ¼ÆËãÄ¸ÏßµçÑ¹
+	// è®¡ç®—æ¯çº¿ç”µå‹
 	Aux = FRACMPY_Q10((stru_Sample.ADVal[CH_VBUS] - stru_Sample.REF[CH_VBUS]), stru_Sample.G_Vb);
 	stru_Sample.ARR[CH_VBUS] = FRACMPY_Q12(Aux, stru_Sample.G_BG);
-	// ¼ÆËãÄ¸ÏßµçÁ÷
+	// è®¡ç®—æ¯çº¿ç”µæµ
 	Aux = FRACMPY_Q10((stru_Sample.ADVal[CH_IBUS] - stru_Sample.REF[CH_IBUS]), stru_Sample.G_Ib);
 	stru_Sample.ARR[CH_IBUS] = FRACMPY_Q12(Aux, stru_Sample.G_BG);
 
-	// ¼ÆËãNTCÎÂ¶È
+	// è®¡ç®—NTCæ¸©åº¦
 	Aux = FRACMPY_Q10((stru_Sample.ADVal[CH_TEMP] - stru_Sample.REF[CH_TEMP]), stru_Sample.G_Vc);
 	stru_Sample.ARR[CH_TEMP] = FRACMPY_Q12(Aux, stru_Sample.G_BG);
 
 #else
 
-	// ¼ÆËãµ÷ËÙµçÑ¹
+	// è®¡ç®—è°ƒé€Ÿç”µå‹
 	stru_Sample.ARR[CH_VCTR] = FRACMPY_Q10((stru_Sample.ADVal[CH_VCTR] - stru_Sample.REF[CH_VCTR]), stru_Sample.G_Vc);
-	// ¼ÆËãÄ¸ÏßµçÑ¹
+	// è®¡ç®—æ¯çº¿ç”µå‹
 	stru_Sample.ARR[CH_VBUS] = FRACMPY_Q10((stru_Sample.ADVal[CH_VBUS] - stru_Sample.REF[CH_VBUS]), stru_Sample.G_Vb);
-	// ¼ÆËãÄ¸ÏßµçÁ÷
+	// è®¡ç®—æ¯çº¿ç”µæµ
 	stru_Sample.ARR[CH_IBUS] = FRACMPY_Q10((stru_Sample.ADVal[CH_IBUS] - stru_Sample.REF[CH_IBUS]), stru_Sample.G_Ib);
-	// ¼ÆËãNTCÎÂ¶È
+	// è®¡ç®—NTCæ¸©åº¦
 	stru_Sample.ARR[CH_TEMP] = FRACMPY_Q10((stru_Sample.ADVal[CH_TEMP] - stru_Sample.REF[CH_TEMP]), stru_Sample.G_Vc);
 
 #endif
 
-	// Ä¸ÏßµçÑ¹Êı×ÖÂË²¨
+	// æ¯çº¿ç”µå‹æ•°å­—æ»¤æ³¢
 	Basic.Vbus = DFILTER(stru_Sample.ARR[CH_VBUS], Basic.Vbus, Para.Lpf.Samp_Vbus);
-	// µ÷ËÙĞÅºÅÊı×ÖÂË²¨
+	// è°ƒé€Ÿä¿¡å·æ•°å­—æ»¤æ³¢
 	Basic.VCtr = DFILTER(stru_Sample.ARR[CH_VCTR], Basic.VCtr, Para.Lpf.Samp_Vctrl);
-	// Ä¸ÏßµçÁ÷Êı×ÖÂË²¨
+	// æ¯çº¿ç”µæµæ•°å­—æ»¤æ³¢
 	Basic.Ibus = DFILTER(stru_Sample.ARR[CH_IBUS], Basic.Ibus, Para.Lpf.Samp_Ibus);
 	;
 	if (Basic.Ibus < 0)
 	{
 		Basic.Ibus = 0;
 	}
-	// NTCĞÅºÅÊı×ÖÂË²¨
+	// NTCä¿¡å·æ•°å­—æ»¤æ³¢
 	Basic.VTem = DFILTER(stru_Sample.ARR[CH_TEMP], Basic.VTem, Para.Lpf.Samp_Vctrl);
 
-	// Ä¸ÏßµçÑ¹(ÊµÊ±Öµ)ÓÃ×÷±£»¤
+	// æ¯çº¿ç”µå‹(å®æ—¶å€¼)ç”¨ä½œä¿æŠ¤
 	Basic.Vbus_Check = stru_Sample.ARR[CH_VBUS];
 	//----------------------------------------------------------------------/
 }
@@ -803,7 +803,7 @@ void ADC_Sample(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : SysTick_1ms
- * Description    : 1ms¶¨Ê±ÈÎÎñ
+ * Description    : 1mså®šæ—¶ä»»åŠ¡
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -815,26 +815,26 @@ void SysTick_1ms(void)
 	TimeFlag_1ms = 0;
 
 	//=======================================================================//
-	// ADCÍ¨µÀ²ÉÑù
+	// ADCé€šé“é‡‡æ ·
 	ADC_Sample();
 
 	//=======================================================================//
-	// 10ms ÈÎÎñ´¦Àí
+	// 10ms ä»»åŠ¡å¤„ç†
 	if (++Count.TimeBase[0] >= 10) // 10ms
 	{
 		Count.TimeBase[0] = 0;
 		//-----------------------------------------------------------------------/
-		// ÓÃ»§½ø³Ì
+		// ç”¨æˆ·è¿›ç¨‹
 		FOC_User_Control();
 		//-----------------------------------------------------------------------/
 //-------------------------------------------------------------------//
-// µ÷ËÙ²¶»ñ--PWM
+// è°ƒé€Ÿæ•è·--PWM
 #if (Config_CCP_Capture == CCP_Capture_Enable)
 		User_Speed_Capture();
 #endif
 
 		//-------------------------------------------------------------------//
-		// ËÙ¶È·´À¡--FG
+		// é€Ÿåº¦åé¦ˆ--FG
 
 #if (Config_CCP_PWM == CCP_PWM_Enable)
 		User_Speed_Out();
@@ -844,12 +844,12 @@ void SysTick_1ms(void)
 	}
 
 	//=======================================================================//
-	// 100ms ´¦Àí
+	// 100ms å¤„ç†
 	if (++Count.TimeBase[1] >= 100) // 100ms
 	{
 		Count.TimeBase[1] = 0;
 
-// Ë¯Ãß´¦Àí
+// ç¡çœ å¤„ç†
 #if (Sleep_Control_Mode == Sleep_Enable)
 		User_Sleep_Manage();
 #endif
@@ -897,7 +897,7 @@ void MC_Ramp_Control(struct_SpeedRamp *Ramp, int32_t Ref)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : MC_Speed_Control
- * Description    : ËÙ¶È»· / ¹¦ÂÊ»· ¹¦ÄÜ
+ * Description    : é€Ÿåº¦ç¯ / åŠŸç‡ç¯ åŠŸèƒ½
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -909,27 +909,34 @@ void MC_Speed_Control(void)
 
 #if ((LIMIT_POWER_ENABLE) || (LIMIT_SPEED_ENABLE) || (LIMIT_CURRENT_ENABLE))
 
+#if (Config_Contorl_Mode == Current_Loop || Config_Contorl_Mode == Power_Loop)
 	// static uint16_t hSpeedLimitCount = 0;
 	static uint16_t hSpeedTargetBeforeLimit;
+#endif
+
 #if (LIMIT_SPEED_ENABLE && LIMIT_CURRENT_ENABLE)
 	static uint8_t bSpeedCurrentLimitFlag;
 #endif
+
 #if (LIMIT_SPEED_ENABLE)
 	static uint16_t hPowerTargetBeforeLimit;
 #endif
+
 #if (LIMIT_CURRENT_ENABLE)
+#if (Config_Contorl_Mode == Power_Loop)
 	static uint16_t hIbusLimitCount = 0;
+#endif
 	volatile int32_t wTempCalcIbus = 0;
 #endif
 
 #endif
 
 	//=======================================================================//
-	// µç»úÊµ¼ÊµçÑ¹µçÁ÷¹¦ÂÊ¼ÆËã
+	// ç”µæœºå®é™…ç”µå‹ç”µæµåŠŸç‡è®¡ç®—
 	Motor_Actual_Calculate();
 
 	//=========================================================================//
-	// Ó²¼ş¹¦ÂÊ¼ÆËã
+	// ç¡¬ä»¶åŠŸç‡è®¡ç®—
 	int32_t wTempPower = 0;
 
 	wTempPower = FRACMPY_Q15(Basic.Vbus, Basic.Ibus);
@@ -943,40 +950,40 @@ void MC_Speed_Control(void)
 
 		//=========================================================================//
 
-		// µ÷ËÙ¿ØÖÆÄ£Ê½£¬ºã×ª¾Ø/ºã×ªËÙ/ºã¹¦ÂÊ
+		// è°ƒé€Ÿæ§åˆ¶æ¨¡å¼ï¼Œæ’è½¬çŸ©/æ’è½¬é€Ÿ/æ’åŠŸç‡
 		if (++stru_FOC.W_Cycle >= stru_FOC.WRAMP)
 		{
 			stru_FOC.W_Cycle = 0;
-			// µ÷ËÙĞÅºÅÅÀÆÂ´¦Àí
+			// è°ƒé€Ÿä¿¡å·çˆ¬å¡å¤„ç†
 			MC_Ramp_Control(&stru_Speed_Ctrl, stru_FOC.Speed_Ref);
 //=======================================================================//
-// Á¦¾Ø»·¿ØÖÆ
+// åŠ›çŸ©ç¯æ§åˆ¶
 #if (Config_Contorl_Mode == Current_Loop)
 			{
-// ÏŞ¹¦ÂÊÊ¹ÄÜ,ÈôÏŞ¹¦ÂÊºÍÏŞ×ªËÙÍ¬Ê±Ê¹ÄÜ£¬ÔòÖ´ĞĞÏŞ¹¦ÂÊ¿ØÖÆ
+// é™åŠŸç‡ä½¿èƒ½,è‹¥é™åŠŸç‡å’Œé™è½¬é€ŸåŒæ—¶ä½¿èƒ½ï¼Œåˆ™æ‰§è¡Œé™åŠŸç‡æ§åˆ¶
 #if (LIMIT_POWER_ENABLE)
-				// ·ÇÏŞÖÆ×´Ì¬ÏÂÅĞ¶Ïµ±Ç°¹¦ÂÊÊÇ·ñ³¬¹ıÏŞ¶¨¹¦ÂÊ
+				// éé™åˆ¶çŠ¶æ€ä¸‹åˆ¤æ–­å½“å‰åŠŸç‡æ˜¯å¦è¶…è¿‡é™å®šåŠŸç‡
 				if (!bSpeedLimitFlag)
 				{
 					if (Basic.Power > stru_FOC.PowerLimit)
 					{
-						// ·ÀÖ¹Æµ·±½øÈëÓëÍË³öÏŞËÙÄ£Ê½
+						// é˜²æ­¢é¢‘ç¹è¿›å…¥ä¸é€€å‡ºé™é€Ÿæ¨¡å¼
 						if (++hSpeedLimitCount > (500 / stru_FOC.WRAMP))
 						{
 							bSpeedLimitFlag = 1;
-							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ±£´æµ±Ç°µµÎ»
+							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ä¿å­˜å½“å‰æ¡£ä½
 
-							PID_WL.Kp = 16384; // ¹¦ÂÊ»·KP = _Q15(0.5), ±Ü¿ª¸¡µãÔËËã
-							PID_WL.Ki = 1638;  // ¹¦ÂÊ»·KI = _Q15(0.05), ±Ü¿ª¸¡µãÔËËã
+							PID_WL.Kp = 16384; // åŠŸç‡ç¯KP = _Q15(0.5), é¿å¼€æµ®ç‚¹è¿ç®—
+							PID_WL.Ki = 1638;  // åŠŸç‡ç¯KI = _Q15(0.05), é¿å¼€æµ®ç‚¹è¿ç®—
 							PID_WL.KiSum = stru_Curr_dq_ref.Iq << 14;
 							PID_WL.Integral = stru_Curr_dq_ref.Iq;
 						}
 					}
 				}
-				// ÏŞÖÆ×´Ì¬ÏÂÅĞ¶ÏÊÇ·ñĞèÒªÈ¡ÏûÏŞÖÆ
+				// é™åˆ¶çŠ¶æ€ä¸‹åˆ¤æ–­æ˜¯å¦éœ€è¦å–æ¶ˆé™åˆ¶
 				else
 				{
-					// µµÎ»ÏÂ½µÊ±È¡ÏûÏŞÖÆ
+					// æ¡£ä½ä¸‹é™æ—¶å–æ¶ˆé™åˆ¶
 					if (stru_Speed_Ctrl.RampOut < (hSpeedTargetBeforeLimit - 100))
 					{
 						bSpeedLimitFlag = 0;
@@ -984,42 +991,42 @@ void MC_Speed_Control(void)
 
 					if (!bSpeedLimitFlag)
 					{
-						PID_WL.Kp = Para.FOC.Wkp; // »Ö¸´×ªËÙ»·PI
+						PID_WL.Kp = Para.FOC.Wkp; // æ¢å¤è½¬é€Ÿç¯PI
 						PID_WL.Ki = Para.FOC.Wki;
 					}
 				}
 
-// ÏŞËÙÊ¹ÄÜ
+// é™é€Ÿä½¿èƒ½
 #elif (LIMIT_SPEED_ENABLE)
-				// ·ÇÏŞËÙ×´Ì¬ÏÂÅĞ¶Ïµ±Ç°×ªËÙÊÇ·ñ³¬¹ıÏŞ¶¨×ªËÙ
+				// éé™é€ŸçŠ¶æ€ä¸‹åˆ¤æ–­å½“å‰è½¬é€Ÿæ˜¯å¦è¶…è¿‡é™å®šè½¬é€Ÿ
 				if (!bSpeedLimitFlag)
 				{
 					if (Basic.Mech_Speed > LIMIT_SPEED_VALUE)
 					{
-						// ·ÀÖ¹Æµ·±½øÈëÓëÍË³öÏŞËÙÄ£Ê½
+						// é˜²æ­¢é¢‘ç¹è¿›å…¥ä¸é€€å‡ºé™é€Ÿæ¨¡å¼
 						if (++hSpeedLimitCount > (500 / stru_FOC.WRAMP))
 						{
 							bSpeedLimitFlag = 1;
-							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ±£´æµ±Ç°µµÎ»
+							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ä¿å­˜å½“å‰æ¡£ä½
 
-							PID_WL.Kp = 16384; // ËÙ¶È»·KP = _Q15(0.5), ±Ü¿ª¸¡µãÔËËã
-							PID_WL.Ki = 1638;  // ËÙ¶È»·KI = _Q15(0.05), ±Ü¿ª¸¡µãÔËËã
+							PID_WL.Kp = 16384; // é€Ÿåº¦ç¯KP = _Q15(0.5), é¿å¼€æµ®ç‚¹è¿ç®—
+							PID_WL.Ki = 1638;  // é€Ÿåº¦ç¯KI = _Q15(0.05), é¿å¼€æµ®ç‚¹è¿ç®—
 							PID_WL.KiSum = stru_Curr_dq_ref.Iq << 14;
 							PID_WL.Integral = stru_Curr_dq_ref.Iq;
 						}
 					}
 				}
-				// ÏŞËÙ×´Ì¬ÏÂÅĞ¶ÏÊÇ·ñĞèÒªÈ¡ÏûÏŞËÙ
+				// é™é€ŸçŠ¶æ€ä¸‹åˆ¤æ–­æ˜¯å¦éœ€è¦å–æ¶ˆé™é€Ÿ
 				else
 				{
-					// µµÎ»ÏÂ½µÊ±È¡ÏûÏŞËÙ
+					// æ¡£ä½ä¸‹é™æ—¶å–æ¶ˆé™é€Ÿ
 					if (stru_Speed_Ctrl.RampOut < (hSpeedTargetBeforeLimit - 100))
 					{
 						bSpeedLimitFlag = 0;
 					}
 					if (!bSpeedLimitFlag)
 					{
-						PID_WL.Kp = Para.FOC.Wkp; // »Ö¸´¹¦ÂÊ»·PI
+						PID_WL.Kp = Para.FOC.Wkp; // æ¢å¤åŠŸç‡ç¯PI
 						PID_WL.Ki = Para.FOC.Wki;
 					}
 				}
@@ -1028,66 +1035,66 @@ void MC_Speed_Control(void)
 
 				if (bSpeedLimitFlag)
 				{
-// ÏŞ¹¦ÂÊÊ¹ÄÜ
+// é™åŠŸç‡ä½¿èƒ½
 #if (LIMIT_POWER_ENABLE)
-					// ºã¹¦ÂÊÊ±µÄPIÖÜÆÚ
+					// æ’åŠŸç‡æ—¶çš„PIå‘¨æœŸ
 					stru_FOC.WRAMP = TIME_POWER_LOOP;
-					// ÏŞ¹¦ÂÊÊ±ºã¹¦ÂÊ¿ØÖÆ
+					// é™åŠŸç‡æ—¶æ’åŠŸç‡æ§åˆ¶
 					stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, stru_FOC.PowerLimit, Basic.Power);
-// ÏŞËÙÊ¹ÄÜ
+// é™é€Ÿä½¿èƒ½
 #elif (LIMIT_SPEED_ENABLE)
-					// ºã×ªËÙÊ±µÄPIÖÜÆÚ
+					// æ’è½¬é€Ÿæ—¶çš„PIå‘¨æœŸ
 					stru_FOC.WRAMP = TIME_SPEED_LOOP;
-					// ÏŞËÙÊ±ºã×ªËÙ¿ØÖÆ
+					// é™é€Ÿæ—¶æ’è½¬é€Ÿæ§åˆ¶
 					stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, Basic.Calb_SpeedLimit, Basic.Calb_Speed);
 #endif
 				}
 				else
 				{
-					// ºãÁ¦¾ØÊ±µÄPIÖÜÆÚ
+					// æ’åŠ›çŸ©æ—¶çš„PIå‘¨æœŸ
 					stru_FOC.WRAMP = 1;
-					// ¿ª»ú×´Ì¬ºãÁ¦¾Ø¿ØÖÆ
+					// å¼€æœºçŠ¶æ€æ’åŠ›çŸ©æ§åˆ¶
 					stru_FOC.Curr_Is_Ref = stru_Speed_Ctrl.RampOut;
 				}
 			}
 //=======================================================================//
-// ×ªËÙ»·¿ØÖÆ
+// è½¬é€Ÿç¯æ§åˆ¶
 #elif (Config_Contorl_Mode == Speed_Loop)
 			{
-// ÏŞ¹¦ÂÊÊ¹ÄÜ
+// é™åŠŸç‡ä½¿èƒ½
 #if (LIMIT_POWER_ENABLE)
-				// ·ÇÏŞÖÆ×´Ì¬ÏÂÅĞ¶Ïµ±Ç°¹¦ÂÊÊÇ·ñ³¬¹ıÏŞ¶¨¹¦ÂÊ
+				// éé™åˆ¶çŠ¶æ€ä¸‹åˆ¤æ–­å½“å‰åŠŸç‡æ˜¯å¦è¶…è¿‡é™å®šåŠŸç‡
 				if (!bSpeedLimitFlag)
 				{
 					if (Basic.Power > stru_FOC.PowerLimit)
 					{
-						// ·ÀÖ¹Æµ·±½øÈëÓëÍË³öÏŞËÙÄ£Ê½
+						// é˜²æ­¢é¢‘ç¹è¿›å…¥ä¸é€€å‡ºé™é€Ÿæ¨¡å¼
 						if (++hSpeedLimitCount > (500 / stru_FOC.WRAMP))
 						{
 							bSpeedLimitFlag = 1;
-							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ±£´æµ±Ç°µµÎ»
+							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ä¿å­˜å½“å‰æ¡£ä½
 
-							PID_WL.Kp = 16384; // ¹¦ÂÊ»·KP = _Q15(0.5), ±Ü¿ª¸¡µãÔËËã
-							PID_WL.Ki = 1638;  // ¹¦ÂÊ»·KI = _Q15(0.05), ±Ü¿ª¸¡µãÔËËã
+							PID_WL.Kp = 16384; // åŠŸç‡ç¯KP = _Q15(0.5), é¿å¼€æµ®ç‚¹è¿ç®—
+							PID_WL.Ki = 1638;  // åŠŸç‡ç¯KI = _Q15(0.05), é¿å¼€æµ®ç‚¹è¿ç®—
 						}
 					}
 				}
-				// ÏŞÖÆ×´Ì¬ÏÂÅĞ¶ÏÊÇ·ñĞèÒªÈ¡ÏûÏŞÖÆ
+				// é™åˆ¶çŠ¶æ€ä¸‹åˆ¤æ–­æ˜¯å¦éœ€è¦å–æ¶ˆé™åˆ¶
 				else
 				{
-					// µµÎ»ÏÂ½µÊ±È¡ÏûÏŞÖÆ
+					// æ¡£ä½ä¸‹é™æ—¶å–æ¶ˆé™åˆ¶
 					if (stru_Speed_Ctrl.RampOut < (hSpeedTargetBeforeLimit - 100))
 					{
 						bSpeedLimitFlag = 0;
 					}
-					// µ±Ç°×ªËÙÖµ±ÈÏŞËÙÇ°µµÎ»×ªËÙ´óÊ±ÍË³ö¹¦ÂÊÏŞÖÆ
+					// å½“å‰è½¬é€Ÿå€¼æ¯”é™é€Ÿå‰æ¡£ä½è½¬é€Ÿå¤§æ—¶é€€å‡ºåŠŸç‡é™åˆ¶
 					//					if( Basic.Calb_Speed > hSpeedTargetBeforeLimit )
 					//					{
 					//						bSpeedLimitFlag = 0;
 					//					}
 					if (!bSpeedLimitFlag)
 					{
-						PID_WL.Kp = Para.FOC.Wkp; // »Ö¸´×ªËÙ»·PI
+						PID_WL.Kp = Para.FOC.Wkp; // æ¢å¤è½¬é€Ÿç¯PI
 						PID_WL.Ki = Para.FOC.Wki;
 					}
 				}
@@ -1095,76 +1102,76 @@ void MC_Speed_Control(void)
 
 				if (bSpeedLimitFlag)
 				{
-					// ºã¹¦ÂÊÊ±µÄPIÖÜÆÚ
+					// æ’åŠŸç‡æ—¶çš„PIå‘¨æœŸ
 					stru_FOC.WRAMP = TIME_POWER_LOOP;
-					// ÏŞ¹¦ÂÊÊ±ºã¹¦ÂÊ¿ØÖÆ
+					// é™åŠŸç‡æ—¶æ’åŠŸç‡æ§åˆ¶
 					stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, stru_FOC.PowerLimit, Basic.Power);
 				}
 				else
 				{
-					// ºã×ªËÙÊ±µÄPIÖÜÆÚ
+					// æ’è½¬é€Ÿæ—¶çš„PIå‘¨æœŸ
 					stru_FOC.WRAMP = TIME_SPEED_LOOP;
-					// ¿ª»ú×´Ì¬ºã×ªËÙ¿ØÖÆ
+					// å¼€æœºçŠ¶æ€æ’è½¬é€Ÿæ§åˆ¶
 					stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, stru_Speed_Ctrl.RampOut, Basic.Calb_Speed);
 				}
 			}
 //===========================================================================//
-// ¹¦ÂÊ»·¿ØÖÆ
+// åŠŸç‡ç¯æ§åˆ¶
 #elif (Config_Contorl_Mode == Power_Loop)
 			{
-// ÏŞËÙÊ¹ÄÜ
+// é™é€Ÿä½¿èƒ½
 #if (LIMIT_SPEED_ENABLE && LIMIT_CURRENT_ENABLE)
 
 				if (!bSpeedLimitFlag)
 				{
-					// ·ÇÏŞËÙ×´Ì¬ÏÂÅĞ¶Ïµ±Ç°×ªËÙÊÇ·ñ³¬¹ıÏŞ¶¨×ªËÙ
+					// éé™é€ŸçŠ¶æ€ä¸‹åˆ¤æ–­å½“å‰è½¬é€Ÿæ˜¯å¦è¶…è¿‡é™å®šè½¬é€Ÿ
 					if (Basic.Mech_Speed > (uint32_t)LIMIT_SPEED_VALUE)
 					{
-						// ·ÀÖ¹Æµ·±½øÈëÓëÍË³öÏŞËÙÄ£Ê½
+						// é˜²æ­¢é¢‘ç¹è¿›å…¥ä¸é€€å‡ºé™é€Ÿæ¨¡å¼
 						if ((++hSpeedLimitCount > (500 / stru_FOC.WRAMP)) && (bSpeedCurrentLimitFlag == 0))
 						{
 							bSpeedLimitFlag = 1;
 							bSpeedCurrentLimitFlag = 0;
-							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ±£´æµ±Ç°µµÎ»
-							hPowerTargetBeforeLimit = Motor_Actual.Power;	   // ±£´æµ±Ç°¹¦ÂÊÖµ
+							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ä¿å­˜å½“å‰æ¡£ä½
+							hPowerTargetBeforeLimit = Motor_Actual.Power;	   // ä¿å­˜å½“å‰åŠŸç‡å€¼
 						}
 					}
-// ·ÇÏŞÄ¸ÏßµçÁ÷×´Ì¬ÏÂÅĞ¶Ïµ±Ç°Ä¸ÏßµçÁ÷ÊÇ·ñ³¬¹ıÏŞ¶¨Ä¸ÏßµçÁ÷
+// éé™æ¯çº¿ç”µæµçŠ¶æ€ä¸‹åˆ¤æ–­å½“å‰æ¯çº¿ç”µæµæ˜¯å¦è¶…è¿‡é™å®šæ¯çº¿ç”µæµ
 #if 0
 							else if( Time.Motor_Limit_Curent > 300 )
 							{
 								if( Motor_Actual.Ibus > stru_FOC.CurrentLimit )
 								{
-									// ·ÀÖ¹Æµ·±½øÈëÓëÍË³öÏŞÄ¸ÏßµçÁ÷Ä£Ê½
+									// é˜²æ­¢é¢‘ç¹è¿›å…¥ä¸é€€å‡ºé™æ¯çº¿ç”µæµæ¨¡å¼
 									if( ++hSpeedLimitCount > (100 / stru_FOC.WRAMP) )
 									{
 										bSpeedLimitFlag = 1;
 										bSpeedCurrentLimitFlag = 1;
-										hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; //±£´æµ±Ç°µµÎ»
+										hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; //ä¿å­˜å½“å‰æ¡£ä½
 									}
 								}
 							}
 #else
-					// FOCÖĞ¶ÏÅĞ¶¨Ä¸Ïß¾ùÖµÏŞÁ÷±êÖ¾£¨¿ìËÙÏìÓ¦£©
+					// FOCä¸­æ–­åˆ¤å®šæ¯çº¿å‡å€¼é™æµæ ‡å¿—ï¼ˆå¿«é€Ÿå“åº”ï¼‰
 					else if (stru_FOC.CurrentLimitFlag)
 					{
 						bSpeedLimitFlag = 1;
 						bSpeedCurrentLimitFlag = 1;
-						hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ±£´æµ±Ç°µµÎ»
+						hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ä¿å­˜å½“å‰æ¡£ä½
 					}
 #endif
 				}
 				else
 				{
-					// ÏŞËÙ×´Ì¬ÏÂÅĞ¶ÏÊÇ·ñĞèÒªÈ¡ÏûÏŞËÙ
+					// é™é€ŸçŠ¶æ€ä¸‹åˆ¤æ–­æ˜¯å¦éœ€è¦å–æ¶ˆé™é€Ÿ
 					if (!bSpeedCurrentLimitFlag)
 					{
-						// µµÎ»ÏÂ½µÊ±È¡ÏûÏŞËÙ
+						// æ¡£ä½ä¸‹é™æ—¶å–æ¶ˆé™é€Ÿ
 						if (stru_Speed_Ctrl.RampOut < (hSpeedTargetBeforeLimit - 200))
 						{
 							bSpeedLimitFlag = 0;
 						}
-						// µ±Ç°¹¦ÂÊÖµ±ÈÄ¿±ê¹¦ÂÊĞ¡Ê±ÍË³öÏŞËÙ
+						// å½“å‰åŠŸç‡å€¼æ¯”ç›®æ ‡åŠŸç‡å°æ—¶é€€å‡ºé™é€Ÿ
 						if (Motor_Actual.Power > (hPowerTargetBeforeLimit + 15))
 						{
 							bSpeedLimitFlag = 0;
@@ -1174,19 +1181,19 @@ void MC_Speed_Control(void)
 						{
 							stru_Speed_Ctrl.RampInc = SPEED_RAMP_INC;
 							stru_Speed_Ctrl.RampDec = SPEED_RAMP_DEC;
-							PID_WL.Kp = Para.FOC.Wkp; // »Ö¸´¹¦ÂÊ»·PI
+							PID_WL.Kp = Para.FOC.Wkp; // æ¢å¤åŠŸç‡ç¯PI
 							PID_WL.Ki = Para.FOC.Wki;
 						}
 					}
-					// ÏŞÄ¸ÏßµçÁ÷×´Ì¬ÏÂÅĞ¶ÏÊÇ·ñĞèÒªÈ¡ÏûÏŞÄ¸ÏßµçÁ÷
+					// é™æ¯çº¿ç”µæµçŠ¶æ€ä¸‹åˆ¤æ–­æ˜¯å¦éœ€è¦å–æ¶ˆé™æ¯çº¿ç”µæµ
 					else
 					{
-						// µµÎ»ÏÂ½µÊ±È¡ÏûÏŞÄ¸ÏßµçÁ÷
+						// æ¡£ä½ä¸‹é™æ—¶å–æ¶ˆé™æ¯çº¿ç”µæµ
 						if (stru_Speed_Ctrl.RampOut < (hSpeedTargetBeforeLimit - 500))
 						{
 							bSpeedLimitFlag = 0;
 						}
-						// ¼ÆËãÄ¸ÏßµçÁ÷ÏÂ½µÊ±È¡ÏûÏŞÄ¸ÏßµçÁ÷
+						// è®¡ç®—æ¯çº¿ç”µæµä¸‹é™æ—¶å–æ¶ˆé™æ¯çº¿ç”µæµ
 						wTempCalcIbus = Basic.Target_Value * 10000 / Motor_Actual.Vbus;
 
 						if (wTempCalcIbus < (stru_FOC.CurrentLimit - 50))
@@ -1208,35 +1215,35 @@ void MC_Speed_Control(void)
 							stru_FOC.CurrentLimitFlag = 0;
 							stru_Speed_Ctrl.RampInc = SPEED_RAMP_INC;
 							stru_Speed_Ctrl.RampDec = SPEED_RAMP_DEC;
-							PID_WL.Kp = Para.FOC.Wkp; // »Ö¸´¹¦ÂÊ»·PI
+							PID_WL.Kp = Para.FOC.Wkp; // æ¢å¤åŠŸç‡ç¯PI
 							PID_WL.Ki = Para.FOC.Wki;
 						}
 					}
 				}
 #elif (LIMIT_SPEED_ENABLE)
-				// ·ÇÏŞËÙ×´Ì¬ÏÂÅĞ¶Ïµ±Ç°×ªËÙÊÇ·ñ³¬¹ıÏŞ¶¨×ªËÙ
+				// éé™é€ŸçŠ¶æ€ä¸‹åˆ¤æ–­å½“å‰è½¬é€Ÿæ˜¯å¦è¶…è¿‡é™å®šè½¬é€Ÿ
 				if (!bSpeedLimitFlag)
 				{
 					if (Basic.Mech_Speed > (uint32_t)LIMIT_SPEED_VALUE)
 					{
-						// ·ÀÖ¹Æµ·±½øÈëÓëÍË³öÏŞËÙÄ£Ê½
+						// é˜²æ­¢é¢‘ç¹è¿›å…¥ä¸é€€å‡ºé™é€Ÿæ¨¡å¼
 						if (++hSpeedLimitCount > (500 / stru_FOC.WRAMP))
 						{
 							bSpeedLimitFlag = 1;
-							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ±£´æµ±Ç°µµÎ»
-							hPowerTargetBeforeLimit = Motor_Actual.Power;	   // ±£´æµ±Ç°¹¦ÂÊÖµ
+							hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ä¿å­˜å½“å‰æ¡£ä½
+							hPowerTargetBeforeLimit = Motor_Actual.Power;	   // ä¿å­˜å½“å‰åŠŸç‡å€¼
 						}
 					}
 				}
-				// ÏŞËÙ×´Ì¬ÏÂÅĞ¶ÏÊÇ·ñĞèÒªÈ¡ÏûÏŞËÙ
+				// é™é€ŸçŠ¶æ€ä¸‹åˆ¤æ–­æ˜¯å¦éœ€è¦å–æ¶ˆé™é€Ÿ
 				else
 				{
-					// µµÎ»ÏÂ½µÊ±È¡ÏûÏŞËÙ
+					// æ¡£ä½ä¸‹é™æ—¶å–æ¶ˆé™é€Ÿ
 					if (stru_Speed_Ctrl.RampOut < (hSpeedTargetBeforeLimit - 200))
 					{
 						bSpeedLimitFlag = 0;
 					}
-					// µ±Ç°¹¦ÂÊÖµ±ÈÄ¿±ê¹¦ÂÊĞ¡Ê±ÍË³öÏŞËÙ
+					// å½“å‰åŠŸç‡å€¼æ¯”ç›®æ ‡åŠŸç‡å°æ—¶é€€å‡ºé™é€Ÿ
 					if (Motor_Actual.Power > (hPowerTargetBeforeLimit + 15))
 					{
 						bSpeedLimitFlag = 0;
@@ -1246,12 +1253,12 @@ void MC_Speed_Control(void)
 					{
 						stru_Speed_Ctrl.RampInc = SPEED_RAMP_INC;
 						stru_Speed_Ctrl.RampDec = SPEED_RAMP_DEC;
-						PID_WL.Kp = Para.FOC.Wkp; // »Ö¸´¹¦ÂÊ»·PI
+						PID_WL.Kp = Para.FOC.Wkp; // æ¢å¤åŠŸç‡ç¯PI
 						PID_WL.Ki = Para.FOC.Wki;
 					}
 				}
 #elif (LIMIT_CURRENT_ENABLE)
-				// ·ÇÏŞÄ¸ÏßµçÁ÷×´Ì¬ÏÂÅĞ¶Ïµ±Ç°Ä¸ÏßµçÁ÷ÊÇ·ñ³¬¹ıÏŞ¶¨Ä¸ÏßµçÁ÷
+				// éé™æ¯çº¿ç”µæµçŠ¶æ€ä¸‹åˆ¤æ–­å½“å‰æ¯çº¿ç”µæµæ˜¯å¦è¶…è¿‡é™å®šæ¯çº¿ç”µæµ
 
 				if (!bSpeedLimitFlag)
 				{
@@ -1262,33 +1269,33 @@ void MC_Speed_Control(void)
 								{
 									stru_Speed_Ctrl.RampInc = 20; //SPEED_RAMP_INC;
 									stru_Speed_Ctrl.RampDec = 20; //SPEED_RAMP_DEC;
-									// ·ÀÖ¹Æµ·±½øÈëÓëÍË³öÏŞÄ¸ÏßµçÁ÷Ä£Ê½
+									// é˜²æ­¢é¢‘ç¹è¿›å…¥ä¸é€€å‡ºé™æ¯çº¿ç”µæµæ¨¡å¼
 									if( ++hSpeedLimitCount > (50 / stru_FOC.WRAMP) )
 									{
 										bSpeedLimitFlag = 1;
-										hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; //±£´æµ±Ç°µµÎ»
+										hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; //ä¿å­˜å½“å‰æ¡£ä½
 									}
 								}
 							}
 #else
-					// FOCÖĞ¶ÏÅĞ¶¨Ä¸Ïß¾ùÖµÏŞÁ÷±êÖ¾£¨¿ìËÙÏìÓ¦£©
+					// FOCä¸­æ–­åˆ¤å®šæ¯çº¿å‡å€¼é™æµæ ‡å¿—ï¼ˆå¿«é€Ÿå“åº”ï¼‰
 					if (stru_FOC.CurrentLimitFlag)
 					{
 						bSpeedLimitFlag = 1;
-						hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ±£´æµ±Ç°µµÎ»
+						hSpeedTargetBeforeLimit = stru_Speed_Ctrl.RampOut; // ä¿å­˜å½“å‰æ¡£ä½
 					}
 #endif
 				}
-				// ÏŞÄ¸ÏßµçÁ÷×´Ì¬ÏÂÅĞ¶ÏÊÇ·ñĞèÒªÈ¡ÏûÏŞÄ¸ÏßµçÁ÷
+				// é™æ¯çº¿ç”µæµçŠ¶æ€ä¸‹åˆ¤æ–­æ˜¯å¦éœ€è¦å–æ¶ˆé™æ¯çº¿ç”µæµ
 				else
 				{
-					// µµÎ»ÏÂ½µÊ±È¡ÏûÏŞÄ¸ÏßµçÁ÷
+					// æ¡£ä½ä¸‹é™æ—¶å–æ¶ˆé™æ¯çº¿ç”µæµ
 					if (stru_Speed_Ctrl.RampOut < (hSpeedTargetBeforeLimit - 500))
 					{
 						bSpeedLimitFlag = 0;
 					}
 
-					// ¼ÆËãÄ¸ÏßµçÁ÷ÏÂ½µÊ±È¡ÏûÏŞÄ¸ÏßµçÁ÷
+					// è®¡ç®—æ¯çº¿ç”µæµä¸‹é™æ—¶å–æ¶ˆé™æ¯çº¿ç”µæµ
 					wTempCalcIbus = Basic.Target_Value * 10000 / Motor_Actual.Vbus;
 
 					if (wTempCalcIbus < (stru_FOC.CurrentLimit - 50))
@@ -1309,7 +1316,7 @@ void MC_Speed_Control(void)
 						stru_FOC.CurrentLimitFlag = 0;
 						stru_Speed_Ctrl.RampInc = SPEED_RAMP_INC;
 						stru_Speed_Ctrl.RampDec = SPEED_RAMP_DEC;
-						PID_WL.Kp = Para.FOC.Wkp; // »Ö¸´¹¦ÂÊ»·PI
+						PID_WL.Kp = Para.FOC.Wkp; // æ¢å¤åŠŸç‡ç¯PI
 						PID_WL.Ki = Para.FOC.Wki;
 					}
 				}
@@ -1321,65 +1328,65 @@ void MC_Speed_Control(void)
 
 					if (!bSpeedCurrentLimitFlag)
 					{
-						// ºã×ªËÙÊ±µÄPIÖÜÆÚ
+						// æ’è½¬é€Ÿæ—¶çš„PIå‘¨æœŸ
 						stru_FOC.WRAMP = TIME_SPEED_LOOP;
 
 						stru_Speed_Ctrl.RampInc = 50;
 						stru_Speed_Ctrl.RampDec = 50;
-						PID_WL.Kp = 6553; // ËÙ¶È»·KP , ±Ü¿ª¸¡µãÔËËã
-						PID_WL.Ki = 200;  // ËÙ¶È»·KI , ±Ü¿ª¸¡µãÔËËã
+						PID_WL.Kp = 6553; // é€Ÿåº¦ç¯KP , é¿å¼€æµ®ç‚¹è¿ç®—
+						PID_WL.Ki = 200;  // é€Ÿåº¦ç¯KI , é¿å¼€æµ®ç‚¹è¿ç®—
 
-						// ÏŞËÙÊ±ºã×ªËÙ¿ØÖÆ
+						// é™é€Ÿæ—¶æ’è½¬é€Ÿæ§åˆ¶
 						stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, Basic.Calb_SpeedLimit, Basic.Calb_Speed);
 					}
 					else
 					{
-						// ºãÄ¸ÏßµçÁ÷Ê±µÄPIÖÜÆÚ
+						// æ’æ¯çº¿ç”µæµæ—¶çš„PIå‘¨æœŸ
 						stru_FOC.WRAMP = 1;
 
 						stru_Speed_Ctrl.RampInc = 10; // 150
 						stru_Speed_Ctrl.RampDec = 10; // 150
-						PID_WL.Kp = 16384;			  // Ä¸ÏßµçÁ÷»·KP , ±Ü¿ª¸¡µãÔËËã  16384  32768
-						PID_WL.Ki = 500;			  // Ä¸ÏßµçÁ÷»·KI , ±Ü¿ª¸¡µãÔËËã   127     3276
+						PID_WL.Kp = 16384;			  // æ¯çº¿ç”µæµç¯KP , é¿å¼€æµ®ç‚¹è¿ç®—  16384  32768
+						PID_WL.Ki = 500;			  // æ¯çº¿ç”µæµç¯KI , é¿å¼€æµ®ç‚¹è¿ç®—   127     3276
 
-						// ÏŞµçÁ÷Ê±ºãÄ¸ÏßµçÁ÷¿ØÖÆ
+						// é™ç”µæµæ—¶æ’æ¯çº¿ç”µæµæ§åˆ¶
 						stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, stru_FOC.CurrentLimit1, Basic.Ibus);
 					}
 #elif (LIMIT_SPEED_ENABLE)
-					// ºã×ªËÙÊ±µÄPIÖÜÆÚ
+					// æ’è½¬é€Ÿæ—¶çš„PIå‘¨æœŸ
 					stru_FOC.WRAMP = TIME_SPEED_LOOP;
 
 					stru_Speed_Ctrl.RampInc = 50;
 					stru_Speed_Ctrl.RampDec = 50;
-					PID_WL.Kp = 6553; // ËÙ¶È»·KP , ±Ü¿ª¸¡µãÔËËã
-					PID_WL.Ki = 200;  // ËÙ¶È»·KI , ±Ü¿ª¸¡µãÔËËã
+					PID_WL.Kp = 6553; // é€Ÿåº¦ç¯KP , é¿å¼€æµ®ç‚¹è¿ç®—
+					PID_WL.Ki = 200;  // é€Ÿåº¦ç¯KI , é¿å¼€æµ®ç‚¹è¿ç®—
 
-					// ÏŞËÙÊ±ºã×ªËÙ¿ØÖÆ
+					// é™é€Ÿæ—¶æ’è½¬é€Ÿæ§åˆ¶
 					stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, Basic.Calb_SpeedLimit, Basic.Calb_Speed);
 #elif (LIMIT_CURRENT_ENABLE)
-					// ºãÄ¸ÏßµçÁ÷Ê±µÄPIÖÜÆÚ
+					// æ’æ¯çº¿ç”µæµæ—¶çš„PIå‘¨æœŸ
 					stru_FOC.WRAMP = 1;
 
 					stru_Speed_Ctrl.RampInc = 10; // 150
 					stru_Speed_Ctrl.RampDec = 10; // 150
-					PID_WL.Kp = 16384;			  // Ä¸ÏßµçÁ÷»·KP, ±Ü¿ª¸¡µãÔËËã  16384  32768
-					PID_WL.Ki = 500;			  // Ä¸ÏßµçÁ÷»·KI, ±Ü¿ª¸¡µãÔËËã   127     3276
+					PID_WL.Kp = 16384;			  // æ¯çº¿ç”µæµç¯KP, é¿å¼€æµ®ç‚¹è¿ç®—  16384  32768
+					PID_WL.Ki = 500;			  // æ¯çº¿ç”µæµç¯KI, é¿å¼€æµ®ç‚¹è¿ç®—  500 127     3276
 
-					// ÏŞµçÁ÷Ê±ºãÄ¸ÏßµçÁ÷¿ØÖÆ
+					// é™ç”µæµæ—¶æ’æ¯çº¿ç”µæµæ§åˆ¶
 					stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, stru_FOC.CurrentLimit1, Basic.Ibus);
 #endif
 				}
 				else
 				{
-					// ºã¹¦ÂÊÊ±µÄPIÖÜÆÚ
+					// æ’åŠŸç‡æ—¶çš„PIå‘¨æœŸ
 					stru_FOC.WRAMP = TIME_POWER_LOOP;
-					// ¿ª»ú×´Ì¬ºã¹¦ÂÊ¿ØÖÆ
+					// å¼€æœºçŠ¶æ€æ’åŠŸç‡æ§åˆ¶
 					stru_FOC.Curr_Is_Ref = PID_CALC(&PID_WL, stru_Speed_Ctrl.RampOut, Basic.Power); // PID_CALC  PID_SpeedLoop
 				}
 			}
 #endif // end torgue and speed or power loop
 	   //=======================================================================//
-	   // ÏŞÖÆIQµçÁ÷Êä³ö
+	   // é™åˆ¶IQç”µæµè¾“å‡º
 			if (stru_FOC.Curr_Is_Ref > stru_FOC.Curr_Iq_Max)
 				stru_FOC.Curr_Is_Ref = stru_FOC.Curr_Iq_Max;
 			if (stru_FOC.Curr_Is_Ref < stru_FOC.Curr_Iq_Min)
@@ -1388,7 +1395,7 @@ void MC_Speed_Control(void)
 		//===========================================================================//
 	}
 	//===============================================================================//
-	// µç»ú¹¤×÷ÔÚ·ÇÔËĞĞÌ¬
+	// ç”µæœºå·¥ä½œåœ¨éè¿è¡Œæ€
 	else
 	{
 		bSpeedLimitFlag = 0;
@@ -1418,24 +1425,24 @@ void MC_Speed_Control(void)
  *-----------------------------------------------------------------------------
  * Function Name  : MC_MotorInit_Process
  * Description    :
- * Function Call  : 1ms½ø³Ìµ÷ÓÃ
+ * Function Call  : 1msè¿›ç¨‹è°ƒç”¨
  * Input Paragram :
  * Return Value   :
  *-----------------------------------------------------------------------------
  ******************************************************************************/
 void MC_MotorInit_Process(void)
 {
-	// ³õÊ¼»¯
+	// åˆå§‹åŒ–
 	if (MOTOR_STATE == MC_INIT)
 	{
 		FOC_MotorSpeed_Filter(stru_FOC.Elec_We);
 	}
-} 
- 
+}
+
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  : UartView
- * Description    : ´®¿Ú¼à²âÊı¾İ--µ÷ÊÔÓÃ
+ * Description    : ä¸²å£ç›‘æµ‹æ•°æ®--è°ƒè¯•ç”¨
  * Function Call  :
  * Input Paragram :
  * Return Value   :
@@ -1475,7 +1482,7 @@ void MC_MotorInit_Process(void)
  **
  ** \param [in] none
  ** \return  none
- ** \note	µç»úÊµ¼Ê²ÎÊı¼ÆËã(µçÑ¹£¬µçÁ÷£¬¹¦ÂÊ£¬×ªËÙ)(µçÑ¹¡¢µçÁ÷=Êµ¼ÊÖµ*100) //2021-08-02
+ ** \note	ç”µæœºå®é™…å‚æ•°è®¡ç®—(ç”µå‹ï¼Œç”µæµï¼ŒåŠŸç‡ï¼Œè½¬é€Ÿ)(ç”µå‹ã€ç”µæµ=å®é™…å€¼*100) //2021-08-02
  *****************************************************************************/
 void Motor_Actual_Calculate(void)
 {

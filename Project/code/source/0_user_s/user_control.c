@@ -4,7 +4,7 @@
  * @file    user_control.c
  * @author  CMS Motor Control Team:wsh
  * @version
- * @date    2023Äê2ÔÂ
+ * @date    2023å¹´2æœˆ
  * @brief
  *---------------------------------------------------------------------------//
  *****************************************************************************/
@@ -24,9 +24,9 @@
 //---------------------------------------------------------------------------/
 //	Local variable  definitions
 //---------------------------------------------------------------------------/
-struct_Capture Capture = {0};	   /* CCP²¶»ñ²ÎÊý½á¹¹Ìå */
-struct_Sleep Sleep = {0};		   /* ÐÝÃß²ÎÊý½á¹¹Ìå */
-struct_UserSet UserPowerSet = {0}; /* ÓÃ»§¹¦ÂÊÉè¶¨²ÎÊý½á¹¹Ìå */
+struct_Capture Capture = {0};	   /* CCPæ•èŽ·å‚æ•°ç»“æž„ä½“ */
+struct_Sleep Sleep = {0};		   /* ä¼‘çœ å‚æ•°ç»“æž„ä½“ */
+struct_UserSet UserPowerSet = {0}; /* ç”¨æˆ·åŠŸçŽ‡è®¾å®šå‚æ•°ç»“æž„ä½“ */
 volatile int32_t Set_Speed = 0;
 
 //---------------------------------------------------------------------------/
@@ -44,33 +44,33 @@ void PWM_AD_Speed_Control(void);
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  :User_Speed_Control
- * Description    :µ÷ËÙÐÅºÅ¿ØÖÆ
- * Function Call  :Ö÷º¯Êýµ÷ÓÃ
- * Input Paragram :ÎÞ
- * Return Value   :ÎÞ
+ * Description    :è°ƒé€Ÿä¿¡å·æŽ§åˆ¶
+ * Function Call  :ä¸»å‡½æ•°è°ƒç”¨
+ * Input Paragram :æ— 
+ * Return Value   :æ— 
  *-----------------------------------------------------------------------------
  ******************************************************************************/
-int32_t s32_Debug_Speed = 20; // µ÷ÊÔÊ±ÉèÖÃµÄ×ªËÙ
+int32_t s32_Debug_Speed = 5; // è°ƒè¯•æ—¶è®¾ç½®çš„è½¬é€Ÿ
 void User_Speed_Control(void)
 {
 #if (Speed_Control_Mode == FAST_Control)
 	{
 		Basic.Target_Value = (int32_t)TARGET_MAX;
-		User_MotorSpeed_Set(Basic.Target_Value); // ÉÏµçÖ±½ÓÔËÐÐ×î´ó¹¦ÂÊ
+		User_MotorSpeed_Set(Basic.Target_Value); // ä¸Šç”µç›´æŽ¥è¿è¡Œæœ€å¤§åŠŸçŽ‡
 		User_Motor_On();
 	}
 #elif (Speed_Control_Mode == PWM_Control)
 	{
-		PWM_Speed_Control(); // PWMµ÷ËÙ
+		PWM_Speed_Control(); // PWMè°ƒé€Ÿ
 	}
 #elif (Speed_Control_Mode == PWM_AD_Control)
 	{
-		PWM_AD_Speed_Control(); // PWMADµ÷ËÙ
+		PWM_AD_Speed_Control(); // PWMADè°ƒé€Ÿ
 	}
-#else
+#else//(Speed_Control_Mode == Debug_Control) // è°ƒè¯•ç”¨ï¼Œç»™å›ºå®šå€¼
 	{
 		Basic.Target_Value = s32_Debug_Speed;
-		User_MotorSpeed_Set(Basic.Target_Value); // µ÷ÊÔÓÃ
+		User_MotorSpeed_Set(Basic.Target_Value); // è°ƒè¯•ç”¨
 
 		// static uint8_t Printf_cnt = 200;
 		// Printf_cnt--;
@@ -87,14 +87,14 @@ void User_Speed_Control(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  :PWM_Speed_Control
- * Description    :PWMµ÷ËÙ¿ØÖÆ
- * Function Call  :Ö÷º¯Êýµ÷ÓÃ
- * Input Paragram :ÎÞ
- * Return Value   :ÎÞ
+ * Description    :PWMè°ƒé€ŸæŽ§åˆ¶
+ * Function Call  :ä¸»å‡½æ•°è°ƒç”¨
+ * Input Paragram :æ— 
+ * Return Value   :æ— 
  *-----------------------------------------------------------------------------
  ******************************************************************************/
 //---------------------------------------------------------------------------//
-#define PWM_DUTY_REF_M1 (450) /* ÔËÐÐµµÎ»ÇÐ»»Õ¼¿Õ±È (0.1%) */
+#define PWM_DUTY_REF_M1 (450) /* è¿è¡Œæ¡£ä½åˆ‡æ¢å ç©ºæ¯” (0.1%) */
 //---------------------------------------------------------------------------//
 void PWM_Speed_Control(void)
 {
@@ -150,10 +150,10 @@ void PWM_Speed_Control(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  :PWM_AD_Speed_Control
- * Description    :PWMADµ÷ËÙ¿ØÖÆ
- * Function Call  :Ö÷º¯Êýµ÷ÓÃ
- * Input Paragram :ÎÞ
- * Return Value   :ÎÞ
+ * Description    :PWMADè°ƒé€ŸæŽ§åˆ¶
+ * Function Call  :ä¸»å‡½æ•°è°ƒç”¨
+ * Input Paragram :æ— 
+ * Return Value   :æ— 
  *-----------------------------------------------------------------------------
  ******************************************************************************/
 //---------------------------------------------------------------------------//
@@ -198,34 +198,34 @@ void PWM_AD_Speed_Control(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  :User_Speed_Capture
- * Description    :µ÷ËÙÐÅºÅ²¶»ñ
- * Function Call  :Ö÷º¯Êýµ÷ÓÃ
- * Input Paragram :ÎÞ
- * Return Value   :ÎÞ
+ * Description    :è°ƒé€Ÿä¿¡å·æ•èŽ·
+ * Function Call  :ä¸»å‡½æ•°è°ƒç”¨
+ * Input Paragram :æ— 
+ * Return Value   :æ— 
  *-----------------------------------------------------------------------------
  ******************************************************************************/
 void User_Speed_Capture(void)
 {
 #if 0
 	//===============================================================================//	
-	if( ++Capture.OverFlowTime >= 10 ) // 100msÒç³ö¼ÆÊýÖÜÆÚ
+	if( ++Capture.OverFlowTime >= 10 ) // 100msæº¢å‡ºè®¡æ•°å‘¨æœŸ
 	{
 		Capture.OverFlowTime = 0;
 		Capture.OverFlowFlag = 1;
 		Capture.CaptureCount = 0;
 		Capture.CompleteFlag = 0;
-		CCP_ConfigCAPMode0( CCP_CAPTURE_MODULE, CCP_CAP_MODE0_FALLING_TO_RISING ); // ÏÂ½µµ½ÉÏÉýÑØ²¶»ñ		
+		CCP_ConfigCAPMode0( CCP_CAPTURE_MODULE, CCP_CAP_MODE0_FALLING_TO_RISING ); // ä¸‹é™åˆ°ä¸Šå‡æ²¿æ•èŽ·		
 		CCP_DisableRun( CCP_CAPTURE_MODULE );	
-		CCP_EnableRun( CCP_CAPTURE_MODULE ); // CCPÄ£¿éÊ¹ÄÜ
+		CCP_EnableRun( CCP_CAPTURE_MODULE ); // CCPæ¨¡å—ä½¿èƒ½
 	}
 	//===============================================================================//			
 	if( Capture.OverFlowFlag )
 	{
-		// PWMÐÅºÅÎª¸ßµçÆ½
+		// PWMä¿¡å·ä¸ºé«˜ç”µå¹³
 		if( PORT_GetBit( PORT0,P IN4 ) )
 		{
-			// ÅÐ¶ÏÕ¼¿Õ±ÈÊÇ·ñÎª100%
-			if( ++Capture.HeightenTime >= 8 )	// 80ms¼ÆÊýÏû¶¶
+			// åˆ¤æ–­å ç©ºæ¯”æ˜¯å¦ä¸º100%
+			if( ++Capture.HeightenTime >= 8 )	// 80msè®¡æ•°æ¶ˆæŠ–
 			{
 #if (PWM_INPUT_MODE == PWM_POSITIVE_LOGIC)
 					Capture.DutyCycle = 1000;
@@ -240,8 +240,8 @@ void User_Speed_Capture(void)
 		}
 		else
 		{
-			// ÅÐ¶ÏÕ¼¿Õ±ÈÊÇ·ñÎª0%
-			if( ++Capture.WeakenTime >= 8 ) // 80ms¼ÆÊýÏû¶¶
+			// åˆ¤æ–­å ç©ºæ¯”æ˜¯å¦ä¸º0%
+			if( ++Capture.WeakenTime >= 8 ) // 80msè®¡æ•°æ¶ˆæŠ–
 			{
 #if (PWM_INPUT_MODE == PWM_POSITIVE_LOGIC)
 					Capture.DutyCycle = 0;
@@ -261,7 +261,7 @@ void User_Speed_Capture(void)
 		Capture.HeightenTime = 0;
 		
 		//===============================================================================//
-		// Âö¿íºÜÕ­Õ¼¿Õ±È³ö´íµÄ´¦Àí 2021-08-12
+		// è„‰å®½å¾ˆçª„å ç©ºæ¯”å‡ºé”™çš„å¤„ç† 2021-08-12
 		if( (Capture.CaptureValue[0] >= 65000) || (Capture.CaptureValue[1] >= 65000) )
 		{
 			Capture.CaptureValue[0] = 0;
@@ -273,7 +273,7 @@ void User_Speed_Capture(void)
 			Capture.CaptureValue[3] = 0;
 		}
 		//===============================================================================//		
-   	// ¼ÆËã²¶»ñµ½µÄ¸ßµÍµçÆ½Ê±¼ä
+   	// è®¡ç®—æ•èŽ·åˆ°çš„é«˜ä½Žç”µå¹³æ—¶é—´
 		Capture.CaptureTimeH = (Capture.CaptureValue[0] + Capture.CaptureValue[1]) >> 1;
 		Capture.CaptureTimeL = (Capture.CaptureValue[2] + Capture.CaptureValue[3]) >> 1;
 
@@ -281,45 +281,45 @@ void User_Speed_Capture(void)
 		Capture.CaptureTimeCycle = Capture.CaptureTimeL + Capture.CaptureTimeH;
 		
 		//===============================================================================//
-		// ¼ÆËã²¶»ñµ½ÆµÂÊÓëÕ¼¿Õ±È
+		// è®¡ç®—æ•èŽ·åˆ°é¢‘çŽ‡ä¸Žå ç©ºæ¯”
 #if (Speed_Control_Mode == PWM_Control)
-			Capture.FrequencyTemp = (uint32_t)(16000000 * 10 / Capture.CaptureTimeCycle); //Hz	1/(¼ÆÊýÖµ*CCPÊ±ÖÓÖÜÆÚ)
+			Capture.FrequencyTemp = (uint32_t)(16000000 * 10 / Capture.CaptureTimeCycle); //Hz	1/(è®¡æ•°å€¼*CCPæ—¶é’Ÿå‘¨æœŸ)
 #else
-			Capture.FrequencyTemp = (uint32_t)(1000000*  10 / Capture.CaptureTimeCycle); //Hz	1/(¼ÆÊýÖµ*CCPÊ±ÖÓÖÜÆÚ)
+			Capture.FrequencyTemp = (uint32_t)(1000000*  10 / Capture.CaptureTimeCycle); //Hz	1/(è®¡æ•°å€¼*CCPæ—¶é’Ÿå‘¨æœŸ)
 #endif
 
 #if (PWM_INPUT_MODE == PWM_POSITIVE_LOGIC)
-			Capture.DutyCycleTemp = (uint32_t)(Capture.CaptureTimeH * 1000 / Capture.CaptureTimeCycle) + 1;	//·Ö±æÂÊ 1%
+			Capture.DutyCycleTemp = (uint32_t)(Capture.CaptureTimeH * 1000 / Capture.CaptureTimeCycle) + 1;	//åˆ†è¾¨çŽ‡ 1%
 #else
-			Capture.DutyCycleTemp = (uint32_t)(Capture.CaptureTimeL * 1000 / Capture.CaptureTimeCycle) + 1;	//·Ö±æÂÊ 1%
+			Capture.DutyCycleTemp = (uint32_t)(Capture.CaptureTimeL * 1000 / Capture.CaptureTimeCycle) + 1;	//åˆ†è¾¨çŽ‡ 1%
 #endif
 		
 		//===============================================================================//
-		// ¸üÐÂÆµÂÊÓëÕ¼¿Õ±È
+		// æ›´æ–°é¢‘çŽ‡ä¸Žå ç©ºæ¯”
 		if( Capture.FrequencyTemp == Capture.FrequencyOld )						
 		{
-			if( ABSFUN( (int32_t)Capture.FrequencyOld - (int32_t)Capture.Frequency ) > 6 ) //Æ«²îÅÐ¶Ï  ¡À6
-				Capture.Frequency = Capture.FrequencyTemp; //¸üÐÂÊý¾Ý
+			if( ABSFUN( (int32_t)Capture.FrequencyOld - (int32_t)Capture.Frequency ) > 6 ) //åå·®åˆ¤æ–­  Â±6
+				Capture.Frequency = Capture.FrequencyTemp; //æ›´æ–°æ•°æ®
 		}
 		else 
-			Capture.FrequencyOld = Capture.FrequencyTemp; //¸üÐÂ¾ÉÖµ
+			Capture.FrequencyOld = Capture.FrequencyTemp; //æ›´æ–°æ—§å€¼
 		if (Capture.DutyCycleTemp == Capture.DutyCycleOld)
 		{
-			if( ABSFUN( (int32_t)Capture.DutyCycleOld - (int32_t)Capture.DutyCycle ) > 6 ) //Æ«²îÅÐ¶Ï	 ¡À6
-				Capture.DutyCycle = Capture.DutyCycleTemp; //¸üÐÂÊý¾Ý
+			if( ABSFUN( (int32_t)Capture.DutyCycleOld - (int32_t)Capture.DutyCycle ) > 6 ) //åå·®åˆ¤æ–­	 Â±6
+				Capture.DutyCycle = Capture.DutyCycleTemp; //æ›´æ–°æ•°æ®
 		}
 		else
 			Capture.DutyCycleOld = Capture.DutyCycleTemp;				
 		//===============================================================================//	
 		
-		Capture.CaptureCount = 0;			//ÖØÐÂ¿ªÊ¼²É¼¯
-		Capture.CompleteFlag = 0;			//Çå³ý²É¼¯Íê³É±êÖ¾
+		Capture.CaptureCount = 0;			//é‡æ–°å¼€å§‹é‡‡é›†
+		Capture.CompleteFlag = 0;			//æ¸…é™¤é‡‡é›†å®Œæˆæ ‡å¿—
 		
 		//===============================================================================//			
 	}
 #else
 
-	if (++Capture.OverFlowTime >= 20) // 100msÒç³ö¼ÆÊýÖÜÆÚ
+	if (++Capture.OverFlowTime >= 20) // 100msæº¢å‡ºè®¡æ•°å‘¨æœŸ
 	{
 		Capture.OverFlowTime = 0;
 		Capture.OverFlowFlag = 1;
@@ -327,14 +327,14 @@ void User_Speed_Capture(void)
 		Capture.CompleteFlag = 0;
 
 		CCP_DisableRun(CCP1);
-		CCP_EnableRun(CCP1); // CCPÄ£¿éÊ¹ÄÜ
+		CCP_EnableRun(CCP1); // CCPæ¨¡å—ä½¿èƒ½
 	}
 
 	if (Capture.OverFlowFlag)
 	{
-		if (PORT_GetBit(PORT0, PIN4)) // ÅÐ¶ÏÕ¼¿Õ±ÈÊÇ·ñÎª100%
+		if (PORT_GetBit(PORT0, PIN4)) // åˆ¤æ–­å ç©ºæ¯”æ˜¯å¦ä¸º100%
 		{
-			if (++Capture.HeightenTime >= 8) // 80ms¼ÆÊýÏû¶¶
+			if (++Capture.HeightenTime >= 8) // 80msè®¡æ•°æ¶ˆæŠ–
 			{
 #if (PWM_INPUT_MODE == PWM_POSITIVE_LOGIC)
 				Capture.DutyCycle = 1000;
@@ -349,7 +349,7 @@ void User_Speed_Capture(void)
 		}
 		else
 		{
-			if (++Capture.WeakenTime >= 8) // 80ms¼ÆÊýÏû¶¶
+			if (++Capture.WeakenTime >= 8) // 80msè®¡æ•°æ¶ˆæŠ–
 			{
 #if (PWM_INPUT_MODE == PWM_POSITIVE_LOGIC)
 				Capture.DutyCycle = 0;
@@ -369,44 +369,44 @@ void User_Speed_Capture(void)
 		Capture.HeightenTime = 0;
 
 		//===============================================================================//
-		// »ñÈ¡CCP²¶»ñÖµ
+		// èŽ·å–CCPæ•èŽ·å€¼
 		Capture.CaptureTimeH = CCP_GetCAPMode2Result(CAP1_SUB_CAP2);
 		Capture.CaptureTimeL = CCP_GetCAPMode2Result(CAP1_SUB_CAP3) - CCP_GetCAPMode2Result(CAP1_SUB_CAP2);
 		Capture.CaptureTimeCycle = CCP_GetCAPMode2Result(CAP1_SUB_CAP3);
 
 //===============================================================================//
-// ¼ÆËã²¶»ñµ½ÆµÂÊÓëÕ¼¿Õ±È
+// è®¡ç®—æ•èŽ·åˆ°é¢‘çŽ‡ä¸Žå ç©ºæ¯”
 #if (Speed_Control_Mode == PWM_Control)
-		Capture.FrequencyTemp = (uint32_t)(16000000 * 10 / Capture.CaptureTimeCycle); // 0.1Hz	1/(¼ÆÊýÖµ*CCPÊ±ÖÓÖÜÆÚ)
+		Capture.FrequencyTemp = (uint32_t)(16000000 * 10 / Capture.CaptureTimeCycle); // 0.1Hz	1/(è®¡æ•°å€¼*CCPæ—¶é’Ÿå‘¨æœŸ)
 #else
-		Capture.FrequencyTemp = (uint32_t)(1000000 * 10 / Capture.CaptureTimeCycle); // 0.1Hz	1/(¼ÆÊýÖµ*CCPÊ±ÖÓÖÜÆÚ)
+		Capture.FrequencyTemp = (uint32_t)(1000000 * 10 / Capture.CaptureTimeCycle); // 0.1Hz	1/(è®¡æ•°å€¼*CCPæ—¶é’Ÿå‘¨æœŸ)
 #endif
 
 #if (PWM_INPUT_MODE == PWM_POSITIVE_LOGIC)
-		Capture.DutyCycleTemp = (uint32_t)(Capture.CaptureTimeH * 1000 / Capture.CaptureTimeCycle) + 1; // ·Ö±æÂÊ 0.1%
+		Capture.DutyCycleTemp = (uint32_t)(Capture.CaptureTimeH * 1000 / Capture.CaptureTimeCycle) + 1; // åˆ†è¾¨çŽ‡ 0.1%
 #else
-		Capture.DutyCycleTemp = (uint32_t)(Capture.CaptureTimeL * 1000 / Capture.CaptureTimeCycle) + 1; // ·Ö±æÂÊ 0.1%
+		Capture.DutyCycleTemp = (uint32_t)(Capture.CaptureTimeL * 1000 / Capture.CaptureTimeCycle) + 1; // åˆ†è¾¨çŽ‡ 0.1%
 #endif
 
 		//===============================================================================//
-		// ¸üÐÂÆµÂÊÓëÕ¼¿Õ±È
+		// æ›´æ–°é¢‘çŽ‡ä¸Žå ç©ºæ¯”
 		if (Capture.FrequencyTemp == Capture.FrequencyOld)
 		{
-			if (ABSFUN((int32_t)Capture.FrequencyOld - (int32_t)Capture.Frequency) > 6) // Æ«²îÅÐ¶Ï  ¡À6
-				Capture.Frequency = Capture.FrequencyTemp;								// ¸üÐÂÊý¾Ý
+			if (ABSFUN((int32_t)Capture.FrequencyOld - (int32_t)Capture.Frequency) > 6) // åå·®åˆ¤æ–­  Â±6
+				Capture.Frequency = Capture.FrequencyTemp;								// æ›´æ–°æ•°æ®
 		}
 		else
-			Capture.FrequencyOld = Capture.FrequencyTemp; // ¸üÐÂ¾ÉÖµ
+			Capture.FrequencyOld = Capture.FrequencyTemp; // æ›´æ–°æ—§å€¼
 		if (Capture.DutyCycleTemp == Capture.DutyCycleOld)
 		{
-			if (ABSFUN((int32_t)Capture.DutyCycleOld - (int32_t)Capture.DutyCycle) > 6) // Æ«²îÅÐ¶Ï	 ¡À6
-				Capture.DutyCycle = Capture.DutyCycleTemp;								// ¸üÐÂÊý¾Ý
+			if (ABSFUN((int32_t)Capture.DutyCycleOld - (int32_t)Capture.DutyCycle) > 6) // åå·®åˆ¤æ–­	 Â±6
+				Capture.DutyCycle = Capture.DutyCycleTemp;								// æ›´æ–°æ•°æ®
 		}
 		else
-			Capture.DutyCycleOld = Capture.DutyCycleTemp; // ¸üÐÂ¾ÉÖµ
+			Capture.DutyCycleOld = Capture.DutyCycleTemp; // æ›´æ–°æ—§å€¼
 
-		Capture.CaptureCount = 0; // ÖØÐÂ¿ªÊ¼²É¼¯
-		Capture.CompleteFlag = 0; // Çå³ý²É¼¯Íê³É±êÖ¾
+		Capture.CaptureCount = 0; // é‡æ–°å¼€å§‹é‡‡é›†
+		Capture.CompleteFlag = 0; // æ¸…é™¤é‡‡é›†å®Œæˆæ ‡å¿—
 	}
 
 #endif
@@ -415,10 +415,10 @@ void User_Speed_Capture(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  :CCP_PWM_Config
- * Description    :ÉèÖÃCCPnÄ£¿é×°ÔØÖµ
- * Function Call  :FGÊä³öµ÷ÓÃ
- * Input Paragram :ÎÞ
- * Return Value   :ÎÞ
+ * Description    :è®¾ç½®CCPnæ¨¡å—è£…è½½å€¼
+ * Function Call  :FGè¾“å‡ºè°ƒç”¨
+ * Input Paragram :æ— 
+ * Return Value   :æ— 
  *-----------------------------------------------------------------------------
  ******************************************************************************/
 void CCP_PWM_Config(uint32_t CCPn, uint32_t CCPChannel, uint32_t ReloadMode, uint32_t Period, uint32_t Compare)
@@ -470,10 +470,10 @@ void CCP_PWM_Config(uint32_t CCPn, uint32_t CCPChannel, uint32_t ReloadMode, uin
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  :User_Speed_Out
- * Description    :×ªËÙ£¨FG£©Êä³ö
- * Function Call  :Ö÷º¯Êýµ÷ÓÃ
- * Input Paragram :ÎÞ
- * Return Value   :ÎÞ
+ * Description    :è½¬é€Ÿï¼ˆFGï¼‰è¾“å‡º
+ * Function Call  :ä¸»å‡½æ•°è°ƒç”¨
+ * Input Paragram :æ— 
+ * Return Value   :æ— 
  *-----------------------------------------------------------------------------
  ******************************************************************************/
 void User_Speed_Out(void)
@@ -481,11 +481,11 @@ void User_Speed_Out(void)
 	if (Basic.FG_Speed >= Capture.FG_SpeedMin)
 	{
 		//-------------------------------------------------------------------//
-		// IO¿ÚÅäÖÃÎªCCPÄ£Ê½
+		// IOå£é…ç½®ä¸ºCCPæ¨¡å¼
 		CCP_PWM_GPIO(0, 0);
 
 		//-------------------------------------------------------------------//
-		if (Capture.FG_SpeedOld != Basic.FG_Speed) // Óë±£ÁôµÄ¾ÉÖµ²»Ò»ÖÂÔò¸üÐÂ
+		if (Capture.FG_SpeedOld != Basic.FG_Speed) // ä¸Žä¿ç•™çš„æ—§å€¼ä¸ä¸€è‡´åˆ™æ›´æ–°
 		{
 			Capture.FG_SpeedOld = Basic.FG_Speed;
 			Capture.FG_Period = (uint16_t)(60 * 1000000 / (MOTOR_PAIRS * Capture.FG_SpeedOld));
@@ -495,34 +495,34 @@ void User_Speed_Out(void)
 
 		if (CCP_PWM_MODULE == CCP0)
 		{
-			if (!(CCP->CON0 & 0x40))	   // ÔËÐÐ±êÖ¾Î»ÅÐ¶Ï
-				CCP_Start(CCP_PWM_MODULE); // Ê¹ÄÜCCPÄ£¿é
+			if (!(CCP->CON0 & 0x40))	   // è¿è¡Œæ ‡å¿—ä½åˆ¤æ–­
+				CCP_Start(CCP_PWM_MODULE); // ä½¿èƒ½CCPæ¨¡å—
 		}
 		else
 		{
-			if (!(CCP->CON1 & 0x40))	   // ÔËÐÐ±êÖ¾Î»ÅÐ¶Ï
-				CCP_Start(CCP_PWM_MODULE); // Ê¹ÄÜCCPÄ£¿é
+			if (!(CCP->CON1 & 0x40))	   // è¿è¡Œæ ‡å¿—ä½åˆ¤æ–­
+				CCP_Start(CCP_PWM_MODULE); // ä½¿èƒ½CCPæ¨¡å—
 		}
 
-		if (!(CCP->RUN & (0x1 << CCP_PWM_MODULE))) // ÔËÐÐ±êÖ¾Î»ÅÐ¶Ï
-			CCP_EnableRun(CCP_PWM_MODULE);		   // ÔËÐÐCCP
+		if (!(CCP->RUN & (0x1 << CCP_PWM_MODULE))) // è¿è¡Œæ ‡å¿—ä½åˆ¤æ–­
+			CCP_EnableRun(CCP_PWM_MODULE);		   // è¿è¡ŒCCP
 	}
 	else
 	{
 		//-------------------------------------------------------------------//
 		Capture.FG_SpeedOld = 0;
-		CCP_Stop(CCP_PWM_MODULE);		// Í£Ö¹CCP
-		CCP_DisableRun(CCP_PWM_MODULE); // ¹Ø±ÕCCPÄ£¿é
+		CCP_Stop(CCP_PWM_MODULE);		// åœæ­¢CCP
+		CCP_DisableRun(CCP_PWM_MODULE); // å…³é—­CCPæ¨¡å—
 
 		//-------------------------------------------------------------------//
-		// Í£»úÊ±£¬IO¿ÚÅäÖÃÎªGPIOÊä³öÄ£Ê½£¬²¢Êä³öÎªµÍ£¬¹ÊÕÏ²úÉúÊ±Êä³öÎª¸ß
+		// åœæœºæ—¶ï¼ŒIOå£é…ç½®ä¸ºGPIOè¾“å‡ºæ¨¡å¼ï¼Œå¹¶è¾“å‡ºä¸ºä½Žï¼Œæ•…éšœäº§ç”Ÿæ—¶è¾“å‡ºä¸ºé«˜
 		if (MOTOR_FAULT_CODE == NOERROR && 0 == Fault_Flag)
 		{
-			CCP_PWM_GPIO(1, 0); // Õý³£Í£»úÊä³öÎªµÍ
+			CCP_PWM_GPIO(1, 0); // æ­£å¸¸åœæœºè¾“å‡ºä¸ºä½Ž
 		}
 		else
 		{
-			CCP_PWM_GPIO(1, 1); // ¹ÊÕÏÍ£»úÊä³öÎª¸ß
+			CCP_PWM_GPIO(1, 1); // æ•…éšœåœæœºè¾“å‡ºä¸ºé«˜
 		}
 	}
 }
@@ -530,10 +530,10 @@ void User_Speed_Out(void)
 /*****************************************************************************
  *-----------------------------------------------------------------------------
  * Function Name  :User_Sleep_Manage
- * Description    :Ë¯Ãß¹ÜÀí
- * Function Call  :Ö÷º¯Êýµ÷ÓÃ
- * Input Paragram :ÎÞ
- * Return Value   :ÎÞ
+ * Description    :ç¡çœ ç®¡ç†
+ * Function Call  :ä¸»å‡½æ•°è°ƒç”¨
+ * Input Paragram :æ— 
+ * Return Value   :æ— 
  *-----------------------------------------------------------------------------
  ******************************************************************************/
 void User_Sleep_Manage(void)
@@ -543,14 +543,14 @@ void User_Sleep_Manage(void)
 		if (++Sleep.SleepCount >= 30) // 100*30 = 3s
 		{
 			Sleep.SleepCount = 0;
-			// ¹Ø¹Ü
+			// å…³ç®¡
 			Brige_Output_Off();
-			// ÇåÖÐ¶ÏÊ¹ÄÜ
+			// æ¸…ä¸­æ–­ä½¿èƒ½
 			NVIC->ICER[0U] = 0xFFFFFFFF;
-			// ÌØÊâ´¦ÀíSysTick
+			// ç‰¹æ®Šå¤„ç†SysTick
 			SysTick->CTRL = 0x00000005;
 
-// ¹Ø±ÕËùÓÐÄ£¿é
+// å…³é—­æ‰€æœ‰æ¨¡å—
 #if (ACMP_CH == ACMP_CH0)
 			ACMP_Stop(ACMP0);
 #else
@@ -577,18 +577,18 @@ void User_Sleep_Manage(void)
 			EPWM_Stop(EPWM_CH_0_MSK | EPWM_CH_1_MSK | EPWM_CH_2_MSK |
 					  EPWM_CH_3_MSK | EPWM_CH_4_MSK | EPWM_CH_5_MSK);
 
-			// ¹Ø±ÕDAC
+			// å…³é—­DAC
 			DAC_Stop();
 
-			// ¹Ø±Õ³ý·¨Ê±ÖÓ
+			// å…³é—­é™¤æ³•æ—¶é’Ÿ
 			CGC_PER12PeriphClockCmd(CGC_PER12Periph_DIV, ENABLE);
 
 			//-----------------------------------------------------------------------//
-			// ÉèÖÃ»½ÐÑÒý½Å
-			// p04ÊäÈëÖÐ¶Ï
+			// è®¾ç½®å”¤é†’å¼•è„š
+			// p04è¾“å…¥ä¸­æ–­
 			GPIO_Init(PORT0, PIN4, PULLDOWN_INPUT);
-			GPIO_PinAFInConfig(INT3CFG, 0x04); // ÉèÖÃP04ÎªINPUT03ÖÐ¶Ë¿Ú
-			INTM->EGP0 &= ~(0x01 << 3);		   // ÉèÖÃINPUT03 ÉÏÉýÑØ´¥·¢
+			GPIO_PinAFInConfig(INT3CFG, 0x04); // è®¾ç½®P04ä¸ºINPUT03ä¸­ç«¯å£
+			INTM->EGP0 &= ~(0x01 << 3);		   // è®¾ç½®INPUT03 ä¸Šå‡æ²¿è§¦å‘
 			INTM->EGP0 |= 0x01 << 3;
 			NVIC_EnableIRQ(INTP3_IRQn);
 
@@ -600,21 +600,21 @@ void User_Sleep_Manage(void)
 			__WFI();
 
 			//-----------------------------------------------------------------------//
-			// »½ÐÑÖ®ºó
+			// å”¤é†’ä¹‹åŽ
 			//-----------------------------------------------------------------------//
 			DelayTime_ms(2);
-			// ¹ØÖÐ¶Ï
+			// å…³ä¸­æ–­
 			NVIC_DisableIRQ(INTP3_IRQn);
 
 			GPIO_Init(PORT0, PIN4, INPUT);
 			//-----------------------------------------------------------------------//
-			// »Ö¸´¹¦ÄÜ
-			// ³ý·¨£¨¹ØÊ±ÖÓÖ®ºóÐèÒªÖØÐÂÅäÖÃ£©
+			// æ¢å¤åŠŸèƒ½
+			// é™¤æ³•ï¼ˆå…³æ—¶é’Ÿä¹‹åŽéœ€è¦é‡æ–°é…ç½®ï¼‰
 			CGC_PER12PeriphClockCmd(CGC_PER12Periph_DIV, ENABLE);
 			DIVSQRT_EnableDIVMode();
 			DIVSQRT_EnableSingedMode();
 
-// ¿ªÆôËùÓÐÄ£¿é
+// å¼€å¯æ‰€æœ‰æ¨¡å—
 #if (Config_CCP_Capture == CCP_Capture_Enable)
 			CCP_Capture_Init();
 #endif
@@ -655,7 +655,7 @@ void User_Sleep_Manage(void)
 			MC_Clear_FaultMessage();
 
 			//-----------------------------------------------------------------------//
-			// »Ö¸´ÖÐ¶Ï
+			// æ¢å¤ä¸­æ–­
 			__EI_Set();
 
 			SysTick->LOAD = (uint32_t)(MCU_CLK / 1000 - 1UL);

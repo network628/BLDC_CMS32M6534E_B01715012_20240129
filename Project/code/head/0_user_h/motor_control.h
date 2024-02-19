@@ -156,7 +156,7 @@ typedef struct
 
 	int32_t Vbus_Check; // 过欠压保护使用（未滤波）
 	int32_t VTem;
-	int32_t Target_Value;
+	int32_t Target_Value;//定值目标转速
 } struct_Basic_Para;
 
 //---------------------------------------------------------------------------/
@@ -179,10 +179,10 @@ typedef union
 //---------------------------------------------------------------------------/
 typedef struct
 {
-	int32_t Speed_Ref;
+	int32_t Speed_Ref;//得到的速度值
 	int32_t Speed_Ref_Min;
-	int32_t Curr_Is_Ref;
-	int32_t Curr_Iq_Max;
+	int32_t Curr_Is_Ref;//电机当前相电流
+	int32_t Curr_Iq_Max;//
 	int32_t Curr_Iq_Min;
 	int32_t Elec_Angle;
 	uint32_t MotorRunTime;

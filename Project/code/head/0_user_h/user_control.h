@@ -12,8 +12,8 @@
 ******************************************************************************/
 //===========================================================================//
 
-#ifndef  __USER_CONTROL_H__
-#define  __USER_CONTROL_H__
+#ifndef __USER_CONTROL_H__
+#define __USER_CONTROL_H__
 
 //===========================================================================//
 // 代码对齐方式：Edit--Configuration--Editor--C/C++Files--Tab size = 2
@@ -23,42 +23,41 @@
 // 软件：  CMS32M6534QFN40_V100_20230512
 // 电机库：CMS_65_FOCB_V100
 
-
 //===========================================================================//
 /****************************<< 1、调速参数设定 >>****************************/
 //===========================================================================//
 
 //---------------------------------------------------------------------------//
 /****************************<< 调速方式选择 >>*******************************/
-#define  FAST_Control                       (0)                      // 上电直接运行
-#define  PWM_Control                        (1)                      // PWM占空比信号调速
-#define  PWM_AD_Control                     (2)                      // PWMAD信号调速
-#define  Debug_Control                      (3)                      // 调试用，给固定值
-#define  Speed_Control_Mode                 (Debug_Control)
+#define FAST_Control (0)   // 上电直接运行
+#define PWM_Control (1)	   // PWM占空比信号调速
+#define PWM_AD_Control (2) // PWMAD信号调速
+#define Debug_Control (3)  // 调试用，给固定值
+#define Speed_Control_Mode (PWM_AD_Control)
 
 //---------------------------------------------------------------------------//
 /****************************<< 目标值设定 >>*********************************/
 // 设定功率或转速值
-#define  TARGET_MIN                         (20)                     // 最小运行功率 单位：W
-#define  TARGET_MAX                         (40)                    // 最大运行功率 单位：W
+#define TARGET_MIN (1) // 最小运行功率 单位：W
+#define TARGET_MAX (40) // 最大运行功率 单位：W
 
 //---------------------------------------------------------------------------//
 /****************************<< PWM信号输入逻辑 >>****************************/
-#define  PWM_POSITIVE_LOGIC                 (0)                      // 正占空比输入
-#define  PWM_NEGATIVE_LOGIC                 (1)					             // 负占空比输入
-#define  PWM_INPUT_MODE                     (PWM_POSITIVE_LOGIC)
+#define PWM_POSITIVE_LOGIC (0) // 正占空比输入
+#define PWM_NEGATIVE_LOGIC (1) // 负占空比输入
+#define PWM_INPUT_MODE (PWM_POSITIVE_LOGIC)
 
 //---------------------------------------------------------------------------//
 /****************************<< PWM调速占空比参数 >>**************************/
-#define  PWM_DUTY_STOP                      (70)                     // 停止占空比 单位：0.1%
-#define  PWM_DUTY_START                     (100)                    // 启动占空比 单位：0.1%
-#define  PWM_DUTY_MAX                       (900)                    // 最大占空比 单位：0.1%
+#define PWM_DUTY_STOP (70)	 // 停止占空比 单位：0.1%
+#define PWM_DUTY_START (100) // 启动占空比 单位：0.1%
+#define PWM_DUTY_MAX (900)	 // 最大占空比 单位：0.1%
 
 //---------------------------------------------------------------------------//
 /****************************<< PWM_AD电压调速参数 >>*************************/
-#define  PWM_AD_STOP                        (4.8)                    // 停止电压 单位：V
-#define  PWM_AD_START                       (4.5)                    // 启动电压 单位：V
-#define  PWM_AD_MAX                         (0.2)                    // 最大电压 单位：V
+#define PWM_AD_STOP (4.8)  // 停止电压 单位：V
+#define PWM_AD_START (4.5) // 启动电压 单位：V
+#define PWM_AD_MAX (0.2)   // 最大电压 单位：V
 
 //===========================================================================//
 /****************************<< 2、电机及硬件参数设定 >>**********************/
@@ -66,68 +65,67 @@
 
 //---------------------------------------------------------------------------//
 /****************************<< 电机参数 >>***********************************/
-#define  MOTOR_PAIRS                        (1)                      // 电机极对数 单位：Poles
-	//29.6V 380W  N21*0.75
-#define  MOTOR_RS                           (0.0200*1.0)             // 电机相电阻 单位：Ω
-#define  MOTOR_LS                           (0.0175*1.0)             // 电机相电感 单位：mH
+#define MOTOR_PAIRS (1)			// 电机极对数 单位：Poles
+								// 29.6V 380W  N21*0.75
+#define MOTOR_RS (0.0200 * 1.0) // 电机相电阻 单位：Ω
+#define MOTOR_LS (0.0175 * 1.0) // 电机相电感 单位：mH
 
 //---------------------------------------------------------------------------//
 /****************************<< 硬件参数配置 >>*******************************/
 
-	/* 电流采样放大倍数校正说明
-	电流采样放大倍数:  放大倍数:GAIN = (30K * PGA增益设置值 / 30K) ; PGA内部反馈电阻:30K * PGA增益设置值 ;PGA内部正负端输入电阻均为:30K   
-	芯片PGA外部正负端接 R0电阻 实际放大倍数:GAIN = (30K * PGA增益设置值 / (30K + R0))
-	例如 R0 = 100; PGA增益设置值 = 7.5倍 实际放大倍数:GAIN = (30*7.5/(30+0.1)) = 7.475
-	例如 R0 = 1K; PGA增益设置值 = 7.5倍 实际放大倍数:GAIN = (30*7.5/(30+1)) = 7.258
-	例如 R0 = 2K; PGA增益设置值 = 7.5倍 实际放大倍数:GAIN = (30*7.5/(30+2)) = 7.031
-	*/
+/* 电流采样放大倍数校正说明
+电流采样放大倍数:  放大倍数:GAIN = (30K * PGA增益设置值 / 30K) ; PGA内部反馈电阻:30K * PGA增益设置值 ;PGA内部正负端输入电阻均为:30K
+芯片PGA外部正负端接 R0电阻 实际放大倍数:GAIN = (30K * PGA增益设置值 / (30K + R0))
+例如 R0 = 100; PGA增益设置值 = 7.5倍 实际放大倍数:GAIN = (30*7.5/(30+0.1)) = 7.475
+例如 R0 = 1K; PGA增益设置值 = 7.5倍 实际放大倍数:GAIN = (30*7.5/(30+1)) = 7.258
+例如 R0 = 2K; PGA增益设置值 = 7.5倍 实际放大倍数:GAIN = (30*7.5/(30+2)) = 7.031
+*/
 
 //---------------------------------------------------------------------------//
 /****************************<< 使能外部5V作为ADC参考源 >>********************/
-#define  HW_AMP_GAIN_IP                     (7.475)                     // 相电流采样放大倍数 7.26
-#define  HW_AMP_GAIN_IBUS                   (7.475)                     // 母线电流采样放大倍数 7.26
-#define  HW_AMP_REF_IP                      (0.8)                    // 相电流采样偏置电压 单位：V
-#define  HW_AMP_REF_IBUS                    (0.8)                    // 母线电流采样偏置电压 单位：V
+#define HW_AMP_GAIN_IP (7.475)	 // 相电流采样放大倍数 7.26
+#define HW_AMP_GAIN_IBUS (7.475) // 母线电流采样放大倍数 7.26
+#define HW_AMP_REF_IP (0.8)		 // 相电流采样偏置电压 单位：V
+#define HW_AMP_REF_IBUS (0.8)	 // 母线电流采样偏置电压 单位：V
 
-#define  HW_PHASE_RES                       (0.005)                  // 相采样电阻 单位：Ω
-#define  HW_IBUS_RES                        (0.005)                  // 母线采样电阻 单位：Ω
-#define  HW_ADC_REF                         (5.0)                    // ADC参考电压 单位：V
-#define  HW_VBUS_VOLT                       (12.0)                   // 母线电压 单位：V (注:填入电机铭牌电压值)
-#define  HW_VBUS_SDR                        (1.0/11.0)               // 母线电压采样，分压电阻比 (注:必须填入浮点数，不能为整数)
-#define  HW_VBEMF_SDR                       (3.3/50.3)               // 反电动势电压采样，分压电阻比 (注:必须填入浮点数，不能为整数)
-#define  MAX_VOLTAGE_VECTOR                 (0.98)                   // 占空比开度
- 
+#define HW_PHASE_RES (0.005)	  // 相采样电阻 单位：Ω
+#define HW_IBUS_RES (0.005)		  // 母线采样电阻 单位：Ω
+#define HW_ADC_REF (5.0)		  // ADC参考电压 单位：V
+#define HW_VBUS_VOLT (12.0)		  // 母线电压 单位：V (注:填入电机铭牌电压值)
+#define HW_VBUS_SDR (1.0 / 11.0)  // 母线电压采样，分压电阻比 (注:必须填入浮点数，不能为整数)
+#define HW_VBEMF_SDR (3.3 / 50.3) // 反电动势电压采样，分压电阻比 (注:必须填入浮点数，不能为整数)
+#define MAX_VOLTAGE_VECTOR (0.98) // 占空比开度
+
 //===========================================================================//
 /****************************<< 3、启动参数设定 >>****************************/
 //===========================================================================//
 
 //---------------------------------------------------------------------------//
 /****************************<< 启动电流参数 >>*******************************/
-#define  START_CURRENT_INIT                 I_Value(1.0)            // 启动电流初始值 单位：A
-#define  START_CURRENT_FINAL                I_Value(4.0)            // 启动电流最大限值 单位：A
-#define  START_IRAMP                        (1)                      // 启动电流爬坡周期
+#define START_CURRENT_INIT I_Value(1.0)	 // 启动电流初始值 单位：A
+#define START_CURRENT_FINAL I_Value(4.0) // 启动电流最大限值 单位：A
+#define START_IRAMP (1)					 // 启动电流爬坡周期
 
 //---------------------------------------------------------------------------//
 /****************************<< 启动参数 >>*****************************/
 // B版本启动参数 注：启动调试主要调试 OBSE_OFFSET_ANGLE 与 OBSE_OFFSET_ANGLE 这两个参数
-	// 29.6V-380W N21*0.75
-#define  OBSE_OFFSET_ANGLE                  (1400)                   // 观测器补偿角度 1400
-#define  OBSE_KSLF                          (1600)                  // 观测器反电动势滤波系数 1600
+// 29.6V-380W N21*0.75
+#define OBSE_OFFSET_ANGLE (1300) // 观测器补偿角度 1400
+#define OBSE_KSLF (15000)		 // 观测器反电动势滤波系数 1600
 
-#define  OBSE_START_OMGEA                   (10)                     // 观测器启动角速度
-#define  OBSE_GS_FACTOR                     _Q10(0.75)               // 观测器GS修正系数
-#define  OBSE_FS_FACTOR                     (0.5)                    // 观测器FS修正系数
-#define  OBSE_START_EKP                     (500)                  // 观测器KP 
-#define  OBSE_START_EKI                     (8)                    // 观测器KI 150
+#define OBSE_START_OMGEA (15)	  // 观测器启动角速度
+#define OBSE_GS_FACTOR _Q10(0.75) // 观测器GS修正系数
+#define OBSE_FS_FACTOR (0.5)	  // 观测器FS修正系数
+#define OBSE_START_EKP (500)	  // 观测器KP
+#define OBSE_START_EKI (5)		  // 观测器KI 150
 
 //---------------------------------------------------------------------------//
 /****************************<< 顺风启动参数 >>*******************************/
-#define  BEMF_CHECK_TIME                    (2000)                   // BEMF检测顺风态时间 单位：Tpwm
-#define  BEMF_SPEED_START                   (4000)                   // BEMF检测顺风启动转速(低于该转速进入启动态) 单位：RPM
-#define  BEMF_SPEED_MIN                     (6000)                  // BEMF检测顺风最小投切转速(大于该转速进入切换态) 单位：RPM
-#define  BEMF_SPEED_MAX                     (30000)                  // BEMF检测顺风最大投切转速(小于该转速进入切换态) 单位：RPM
-#define  BEMF_OFFSET_ANGLE                  (0)                  // BEMF检测顺风 角度补偿 (0-65535  对应0°-360°  10923->60°)
-
+#define BEMF_CHECK_TIME (2000)	// BEMF检测顺风态时间 单位：Tpwm
+#define BEMF_SPEED_START (4000) // BEMF检测顺风启动转速(低于该转速进入启动态) 单位：RPM
+#define BEMF_SPEED_MIN (6000)	// BEMF检测顺风最小投切转速(大于该转速进入切换态) 单位：RPM
+#define BEMF_SPEED_MAX (30000)	// BEMF检测顺风最大投切转速(小于该转速进入切换态) 单位：RPM
+#define BEMF_OFFSET_ANGLE (0)	// BEMF检测顺风 角度补偿 (0-65535  对应0°-360°  10923->60°)
 
 //===========================================================================//
 /****************************<< 4、运行参数设定 >>****************************/
@@ -136,30 +134,29 @@
 //---------------------------------------------------------------------------//
 /****************************<< 外环PID控制参数 >>****************************/
 // 速度环/功率环PI参数
-#define  FOC_WKP                            _Q15(1.0)                // 速度环KP ( 0.1~2.0 ) 0.15  1.0
-#define  FOC_WKI                            _Q15(0.1)                // 速度环KI ( 0.001~0.05 ) 0.007  0.2
-#define  FOC_WKD                            _Q15(0.0)                // 速度环KD ( 0.1~2.0 )
+#define FOC_WKP _Q15(1.0) // 速度环KP ( 0.1~2.0 ) 0.15  1.0
+#define FOC_WKI _Q15(0.1) // 速度环KI ( 0.001~0.05 ) 0.007  0.2
+#define FOC_WKD _Q15(0.0) // 速度环KD ( 0.1~2.0 )
 
 //---------------------------------------------------------------------------//
 /****************************<< 外环PI控制周期参数 >>*************************/
-#define  TIME_SPEED_LOOP                    (10)                     // 速度环执行周期 单位：ms
-#define  TIME_POWER_LOOP                    (2)                      // 功率环执行周期 单位：ms
+#define TIME_SPEED_LOOP (10) // 速度环执行周期 单位：ms
+#define TIME_POWER_LOOP (2)	 // 功率环执行周期 单位：ms
 
 //---------------------------------------------------------------------------//
 /****************************<< 速度爬坡参数 >>*******************************/
-#define  SPEED_RAMP_INC                     (10)                      // 速度爬坡曲线，加速斜率
-#define  SPEED_RAMP_DEC                     (10)                      // 速度爬坡曲线，下降斜率
+#define SPEED_RAMP_INC (10) // 速度爬坡曲线，加速斜率
+#define SPEED_RAMP_DEC (10) // 速度爬坡曲线，下降斜率
 
 //---------------------------------------------------------------------------//
 /****************************<< 电机运行电流参数 >>***************************/
-#define  FOC_RUN_CURRENT_MIN                I_Value(1.0)             // 电机运行最小相电流峰值 单位：A
-#define  FOC_RUN_CURRENT_MAX                I_Value(30.0)            // 电机运行最大相电流峰值 单位：A
+#define FOC_RUN_CURRENT_MIN I_Value(1.0)  // 电机运行最小相电流峰值 单位：A
+#define FOC_RUN_CURRENT_MAX I_Value(30.0) // 电机运行最大相电流峰值 单位：A
 
 //---------------------------------------------------------------------------//
 /****************************<< 电机效率参数 >>*******************************/
 // 相位补偿角，一般填入负值
-#define  FOC_OFFSET_ANGLE                   _Q15(0.00)               // FOC补偿角，例如补偿10° 补偿值=10/360=0.0278
-
+#define FOC_OFFSET_ANGLE _Q15(0.00) // FOC补偿角，例如补偿10° 补偿值=10/360=0.0278
 
 //===========================================================================//
 /****************************<< 5、功能选择 >>********************************/
@@ -167,59 +164,59 @@
 
 //---------------------------------------------------------------------------//
 /****************************<< 在线仿真模式 >>*******************************/
-#define  Motor_Debug_Offline                (0)                      // 关闭在线仿真
-#define  Motor_Debug_Online                 (1)                      // 在线仿真
-#define  Motor_Debug_Mode                   (Motor_Debug_Offline)
+#define Motor_Debug_Offline (0) // 关闭在线仿真
+#define Motor_Debug_Online (1)	// 在线仿真
+#define Motor_Debug_Mode (Motor_Debug_Offline)
 
 //---------------------------------------------------------------------------//
 /****************************<< DEBUG功能 >>**********************************/
 // 硬件调试 测试EPMW输出波形，同时用于启动测试
-#define  Debug_Disable                      (0)                      // DEBUG模式关闭
-#define  Debug_Enable                       (1)                      // DEBUG模式开启
-#define  Config_Debug_Mode                  (Debug_Disable)   
+#define Debug_Disable (0) // DEBUG模式关闭
+#define Debug_Enable (1)  // DEBUG模式开启
+#define Config_Debug_Mode (Debug_Disable)
 
 //---------------------------------------------------------------------------//
 /****************************<< 电机旋转方向 >>*******************************/
-#define  FR_CW                              (0)                      // 顺时针旋转
-#define  FR_CCW                             (1)                      // 逆时针旋转
-#define  Config_Motor_FR                    (FR_CW)
+#define FR_CW (0)  // 顺时针旋转
+#define FR_CCW (1) // 逆时针旋转
+#define Config_Motor_FR (FR_CW)
 
 //---------------------------------------------------------------------------//
 /****************************<< PWM捕获功能 >>********************************/
-#define  CCP_Capture_Disable                (0)                      // 捕获功能关闭
-#define  CCP_Capture_Enable                 (1)                      // 捕获功能开启
-#define  Config_CCP_Capture                 (CCP_Capture_Enable)
-#define  CCP_CAPTURE_MODULE                 (CCP1)                   // 捕获的模块 CCP0、CCP1
-#define  CCP_CAPTURE_CH                     (CCPxA)                  // 捕获的通道 CCPxA、CCPxB
+#define CCP_Capture_Disable (0) // 捕获功能关闭
+#define CCP_Capture_Enable (1)	// 捕获功能开启
+#define Config_CCP_Capture (CCP_Capture_Enable)
+#define CCP_CAPTURE_MODULE (CCP1) // 捕获的模块 CCP0、CCP1
+#define CCP_CAPTURE_CH (CCPxA)	  // 捕获的通道 CCPxA、CCPxB
 
 //---------------------------------------------------------------------------//
 /****************************<< FG输出功能 >>*********************************/
-#define  CCP_PWM_Disable                    (0)                      // FG输出功能关闭
-#define  CCP_PWM_Enable                     (1)                      // FG输出功能开启
-#define  Config_CCP_PWM                     (CCP_PWM_Enable)
-#define  CCP_PWM_MODULE                     (CCP0)                   // PWM的模块 CCP0、CCP1
-#define  CCP_PWM_CH                         (CCPxA)                  // PWM的通道 CCPxA、CCPxB
+#define CCP_PWM_Disable (0) // FG输出功能关闭
+#define CCP_PWM_Enable (1)	// FG输出功能开启
+#define Config_CCP_PWM (CCP_PWM_Enable)
+#define CCP_PWM_MODULE (CCP0) // PWM的模块 CCP0、CCP1
+#define CCP_PWM_CH (CCPxA)	  // PWM的通道 CCPxA、CCPxB
 
 //---------------------------------------------------------------------------//
 /****************************<< 休眠功能 >>***********************************/
-#define  Sleep_Disable                      (0)                      // 休眠功能关闭
-#define  Sleep_Enable                       (1)                      // 休眠功能开启
-#define  Sleep_Control_Mode                 (Sleep_Disable)
+#define Sleep_Disable (0) // 休眠功能关闭
+#define Sleep_Enable (1)  // 休眠功能开启
+#define Sleep_Control_Mode (Sleep_Disable)
 
 //---------------------------------------------------------------------------//
 /****************************<< 停车方式 >>***********************************/
-#define  BRAKE_STOP_DISABLE                 (0)                      // 自由停车
-#define  BRAKE_STOP_ENABLE                  (1)                      // 刹车
-#define  BRAKE_STOP_MODE                    (BRAKE_STOP_DISABLE)
- 
-#define  BRAKE_STOP_SPEED                   (40000)                  // 刹车转速 单位：RPM
-#define  BRAKE_STOP_TIME                    (350)                    // 刹车时间 单位：ms
+#define BRAKE_STOP_DISABLE (0) // 自由停车
+#define BRAKE_STOP_ENABLE (1)  // 刹车
+#define BRAKE_STOP_MODE (BRAKE_STOP_DISABLE)
+
+#define BRAKE_STOP_SPEED (40000) // 刹车转速 单位：RPM
+#define BRAKE_STOP_TIME (350)	 // 刹车时间 单位：ms
 
 //---------------------------------------------------------------------------//
 /****************************<< Visual Scope监控功能 >>***********************/
-#define  UART_OFF                           (0)                      // 关闭上位机监控
-#define  UART_ON                            (1)                      // 开启上位机监控
-#define  UART_CONFIG_MODE                   (UART_OFF)
+#define UART_OFF (0) // 关闭上位机监控
+#define UART_ON (1)	 // 开启上位机监控
+#define UART_CONFIG_MODE (UART_OFF)
 
 //===========================================================================//
 /****************************<< 6、保护参数设定 >>****************************/
@@ -227,63 +224,63 @@
 
 //---------------------------------------------------------------------------//
 /****************************<< 功率/转速/电流限制参数 >>*********************/
-#define  LIMIT_POWER_ENABLE                 (0)                      // 限功率使能
-#define  LIMIT_POWER_VALUE                  (80)                     // 硬件限功率值 单位：W
+#define LIMIT_POWER_ENABLE (0) // 限功率使能
+#define LIMIT_POWER_VALUE (80) // 硬件限功率值 单位：W
 
-#define  LIMIT_SPEED_ENABLE                 (0)                      // 限转速使能
-#define  LIMIT_SPEED_VALUE                  (130000)                 // 限转速值 单位：RPM
+#define LIMIT_SPEED_ENABLE (0)	   // 限转速使能
+#define LIMIT_SPEED_VALUE (130000) // 限转速值 单位：RPM
 
-#define  LIMIT_CURRENT_ENABLE               (1)                      // 限母线均值电流使能
-#define  LIMIT_CURRENT_VALUE                (15.0)                   // 限母线最大电流值 单位：A
+#define LIMIT_CURRENT_ENABLE (1)   // 限母线均值电流使能
+#define LIMIT_CURRENT_VALUE (15.0) // 限母线最大电流值 单位：A
 
 //---------------------------------------------------------------------------//
 /****************************<< 启动失败保护参数 >>***************************/
-#define  FAULT_START_FAIL_TIME              (2)                      // 启动失败判别时间 单位：s
-#define  FAULT_RESTART_DELAY_TIME           (0.01)                   // 故障保护重启间隔时间 单位：s
-#define  FAULT_RESTART_TIMES                (0)                      // 启动失败重启次数
+#define FAULT_START_FAIL_TIME (2)		// 启动失败判别时间 单位：s
+#define FAULT_RESTART_DELAY_TIME (0.01) // 故障保护重启间隔时间 单位：s
+#define FAULT_RESTART_TIMES (0)			// 启动失败重启次数
 
 //---------------------------------------------------------------------------//
 /****************************<< 故障保护使能开关 >>***************************/
-#define  FAULT_VOLTAGE_ENABLE               (0)                      // 电压保护使能
-#define  FAULT_PHASELOSS_ENABLE             (1)                      // 缺相保护使能
-#define  FAULT_BLOCK_ENABLE                 (0)                      // 堵转保护使能
-#define  FAULT_TEMPERATURE_ENABLE           (0)                      // 电机NTC温度保护使能
-#define  FAULT_AVERAGE_CURRENT_ENABLE       (0)                      // 电机母线均值电流过流保护使能
+#define FAULT_VOLTAGE_ENABLE (0)		 // 电压保护使能
+#define FAULT_PHASELOSS_ENABLE (1)		 // 缺相保护使能
+#define FAULT_BLOCK_ENABLE (0)			 // 堵转保护使能
+#define FAULT_TEMPERATURE_ENABLE (0)	 // 电机NTC温度保护使能
+#define FAULT_AVERAGE_CURRENT_ENABLE (0) // 电机母线均值电流过流保护使能
 
 //---------------------------------------------------------------------------//
 /****************************<< 故障保护是否恢复使能开关 >>*******************/
-#define  FAULT_VOLTAGE_RECOVER_ENABLE       (1)                      // 电压保护恢复使能
-#define  FAULT_TEMPERATURE_RECOVER_ENABLE   (0)                      // 电机NTC温度保护恢复使能
+#define FAULT_VOLTAGE_RECOVER_ENABLE (1)	 // 电压保护恢复使能
+#define FAULT_TEMPERATURE_RECOVER_ENABLE (0) // 电机NTC温度保护恢复使能
 
 //---------------------------------------------------------------------------//
-/****************************<< 电压保护参数 >>*******************************/ 
-#define  FAULT_VBUS_START_OVOT              (33.0)                   // 启动过压保护值 单位：V
-#define  FAULT_VBUS_START_UVOT              (7.0)                   // 启动欠压保护值 单位：V
-#define  FAULT_VBUS_RUN_OVOT                (FAULT_VBUS_START_OVOT)  // 运行过压保护值 单位：V
-#define  FAULT_VBUS_RUN_UVOT                (FAULT_VBUS_START_UVOT - 1) // 运行欠压保护值 单位：V
-#define  FAULT_VBUS_OV_REV                  (FAULT_VBUS_START_OVOT - 1) // 过压保护恢复值 单位：V
-#define  FAULT_VBUS_UV_REV                  (FAULT_VBUS_START_UVOT + 1)  // 欠压保护恢复值 单位：V
+/****************************<< 电压保护参数 >>*******************************/
+#define FAULT_VBUS_START_OVOT (33.0)					// 启动过压保护值 单位：V
+#define FAULT_VBUS_START_UVOT (7.0)						// 启动欠压保护值 单位：V
+#define FAULT_VBUS_RUN_OVOT (FAULT_VBUS_START_OVOT)		// 运行过压保护值 单位：V
+#define FAULT_VBUS_RUN_UVOT (FAULT_VBUS_START_UVOT - 1) // 运行欠压保护值 单位：V
+#define FAULT_VBUS_OV_REV (FAULT_VBUS_START_OVOT - 1)	// 过压保护恢复值 单位：V
+#define FAULT_VBUS_UV_REV (FAULT_VBUS_START_UVOT + 1)	// 欠压保护恢复值 单位：V
 
-#define  FAULT_START_OVER_VBUS_TIME         (50)                     // 启动过压保护时间 单位：ms
-#define  FAULT_START_LOWER_VBUS_TIME        (50)                     // 启动欠压保护时间 单位：ms
-#define  FAULT_RUN_OVER_VBUS_TIME           (50)                     // 运行过压保护时间 单位：ms
-#define  FAULT_RUN_LOWER_VBUS_TIME          (50)                     // 运行欠压保护时间 单位：ms
-#define  FAULT_RECOVER_VBUS_TIME            (100)                    // 保护恢复时间 单位：ms
-
-//---------------------------------------------------------------------------//
-/****************************<< 缺相保护参数 >>*******************************/  
-#define  FAULT_PHASELOSS_CURR               I_Value(2.0)             // 缺相保护电流值 单位：A                                                
-#define  FAULT_PHASELOSS_TIME               (50)                     // 缺相保护时间 单位：10ms
+#define FAULT_START_OVER_VBUS_TIME (50)	 // 启动过压保护时间 单位：ms
+#define FAULT_START_LOWER_VBUS_TIME (50) // 启动欠压保护时间 单位：ms
+#define FAULT_RUN_OVER_VBUS_TIME (50)	 // 运行过压保护时间 单位：ms
+#define FAULT_RUN_LOWER_VBUS_TIME (50)	 // 运行欠压保护时间 单位：ms
+#define FAULT_RECOVER_VBUS_TIME (100)	 // 保护恢复时间 单位：ms
 
 //---------------------------------------------------------------------------//
-/****************************<< 过流保护参数 >>*******************************/ 
-#define  FAULT_OVER_CURRENT                 I_Value(60)              // 相电流峰值过流保护电流值 单位：A    
-#define  FAULT_HARD_OVER_CURRENT            (60.0)                   // 硬件过流保护值 单位：A    
-#define  FAULT_OVER_IBUS                    (17.0)                   // 母线均值电流过流保护电流 单位：A    
-#define  FAULT_OVER_IBUS_TIME               (1000)                   // 母线过流保护时间 单位：ms    
+/****************************<< 缺相保护参数 >>*******************************/
+#define FAULT_PHASELOSS_CURR I_Value(2.0) // 缺相保护电流值 单位：A
+#define FAULT_PHASELOSS_TIME (50)		  // 缺相保护时间 单位：10ms
 
 //---------------------------------------------------------------------------//
-/****************************<< 堵转及堵风口保护参数 >>***********************/ 
+/****************************<< 过流保护参数 >>*******************************/
+#define FAULT_OVER_CURRENT I_Value(60) // 相电流峰值过流保护电流值 单位：A
+#define FAULT_HARD_OVER_CURRENT (60.0) // 硬件过流保护值 单位：A
+#define FAULT_OVER_IBUS (17.0)		   // 母线均值电流过流保护电流 单位：A
+#define FAULT_OVER_IBUS_TIME (1000)	   // 母线过流保护时间 单位：ms
+
+//---------------------------------------------------------------------------//
+/****************************<< 堵转及堵风口保护参数 >>***********************/
 /*
 堵风口保护说明：
 原理说明：
@@ -296,41 +293,41 @@
 	电机堵风口中档功率(POWER_FAULT_LOW):该值为电机中间档位运行功率
 	电机堵风口高档功率(POWER_FAULT_LOW):该值为电机最大运行功率
 */
-#define  FAULT_SPEED_MAX                    (150000)                 // 电机保护最大转速 单位：RPM
-#define  FAULT_SPEED_MIN                    (5000)                   // 电机保护最小转速 单位：RPM
-#define  FAULT_SPEED_LOW_GEAR               (64000)                  // 电机堵风口低档保护转速 单位：RPM
-#define  FAULT_SPEED_MID_GEAR               (88000)                  // 电机堵风口中档保护转速 单位：RPM
-#define  FAULT_SPEED_HIGH_GEAR              (95000)                  // 电机堵风口高档保护转速 单位：RPM
-#define  POWER_FAULT_LOW                    (27)                     // 电机堵风口低档功率 单位：W
-#define  POWER_FAULT_MID                    (70)                     // 电机堵风口中档功率 单位：W
-#define  POWER_FAULT_HIGH                   (110)                    // 电机堵风口高档功率 单位：W
-#define  FAULT_SPEED_K1                     (float)((FAULT_SPEED_MID_GEAR - FAULT_SPEED_LOW_GEAR)/(float)(POWER_FAULT_MID - POWER_FAULT_LOW))
-#define  FAULT_SPEED_K2                     (float)((FAULT_SPEED_HIGH_GEAR - FAULT_SPEED_MID_GEAR)/(float)(POWER_FAULT_HIGH - POWER_FAULT_MID))
-#define  FAULT_BLOCK_TIME                   (4000)                   // 电机堵风口保护时间 单位：ms
+#define FAULT_SPEED_MAX (150000)	  // 电机保护最大转速 单位：RPM
+#define FAULT_SPEED_MIN (5000)		  // 电机保护最小转速 单位：RPM
+#define FAULT_SPEED_LOW_GEAR (64000)  // 电机堵风口低档保护转速 单位：RPM
+#define FAULT_SPEED_MID_GEAR (88000)  // 电机堵风口中档保护转速 单位：RPM
+#define FAULT_SPEED_HIGH_GEAR (95000) // 电机堵风口高档保护转速 单位：RPM
+#define POWER_FAULT_LOW (27)		  // 电机堵风口低档功率 单位：W
+#define POWER_FAULT_MID (70)		  // 电机堵风口中档功率 单位：W
+#define POWER_FAULT_HIGH (110)		  // 电机堵风口高档功率 单位：W
+#define FAULT_SPEED_K1 (float)((FAULT_SPEED_MID_GEAR - FAULT_SPEED_LOW_GEAR) / (float)(POWER_FAULT_MID - POWER_FAULT_LOW))
+#define FAULT_SPEED_K2 (float)((FAULT_SPEED_HIGH_GEAR - FAULT_SPEED_MID_GEAR) / (float)(POWER_FAULT_HIGH - POWER_FAULT_MID))
+#define FAULT_BLOCK_TIME (4000) // 电机堵风口保护时间 单位：ms
 
 //---------------------------------------------------------------------------//
-/****************************<< 温度保护参数 >>*******************************/ 
-	/*
-  120--1.824K  115--2.084K  110--2.390K   105--2.75K    100--3.175K
-  95--3.679K   90--4.282K   85--5.004K    80--5.870K    70--8.187K
-  60--11.635K  50--16.864K  40--24.970K   30--37.832K   20--58.769K
-  10--93.801K  0--154.225K  -5--200.182K  -10--261.999  -20--461.471K   // NTC对照表-47K
-	*/
+/****************************<< 温度保护参数 >>*******************************/
+/*
+120--1.824K  115--2.084K  110--2.390K   105--2.75K    100--3.175K
+95--3.679K   90--4.282K   85--5.004K    80--5.870K    70--8.187K
+60--11.635K  50--16.864K  40--24.970K   30--37.832K   20--58.769K
+10--93.801K  0--154.225K  -5--200.182K  -10--261.999  -20--461.471K   // NTC对照表-47K
+*/
 
-	/*
-  105--0.6K  40--5.0K  30--9.0K   -5--40.0K                          // NTC对照表-10K
-  112--0.6K  80--1.3K  -5--42.0K  -10--59.0K  -15--80.0K             // NTC对照表-10K
-	*/	
+/*
+105--0.6K  40--5.0K  30--9.0K   -5--40.0K                          // NTC对照表-10K
+112--0.6K  80--1.3K  -5--42.0K  -10--59.0K  -15--80.0K             // NTC对照表-10K
+*/
 
-#define  TEMPERATURE_VALUE(NTC_VALUE)        _Q15((5.0*NTC_VALUE/(NTC_PULL_RES+NTC_VALUE))/5.0) 
-#define  NTC_PULL_RES                       (10.0)                   // NTC上拉电阻
-#define  FAULT_OVER_TEMPERATURE             TEMPERATURE_VALUE(0.6)   // 过温保护阈值，根据NTC曲线设定
-#define  FAULT_OVER_TEMPERATURE_RECOVER     TEMPERATURE_VALUE(1.3)   // 过温恢复阈值，根据NTC曲线设定
-#define  FAULT_LOWER_TEMPERATURE            TEMPERATURE_VALUE(80.0)    // 低温保护阈值，根据NTC曲线设定
-#define  FAULT_LOWER_TEMPERATURE_RECOVER    TEMPERATURE_VALUE(59.0)    // 低温恢复阈值，根据NTC曲线设定
-#define  FAULT_OVER_TEMPERATURE_TIME        (500)                    // NTC过温保护时间 单位：ms 
-#define  FAULT_LOWER_TEMPERATURE_TIME       (500)                    // NTC低温保护时间 单位：ms 
-#define  FAULT_RECOVER_TEMPERATURE_TIME     (500)                    // NTC保护恢复时间 单位：ms 
+#define TEMPERATURE_VALUE(NTC_VALUE) _Q15((5.0 * NTC_VALUE / (NTC_PULL_RES + NTC_VALUE)) / 5.0)
+#define NTC_PULL_RES (10.0)										// NTC上拉电阻
+#define FAULT_OVER_TEMPERATURE TEMPERATURE_VALUE(0.6)			// 过温保护阈值，根据NTC曲线设定
+#define FAULT_OVER_TEMPERATURE_RECOVER TEMPERATURE_VALUE(1.3)	// 过温恢复阈值，根据NTC曲线设定
+#define FAULT_LOWER_TEMPERATURE TEMPERATURE_VALUE(80.0)			// 低温保护阈值，根据NTC曲线设定
+#define FAULT_LOWER_TEMPERATURE_RECOVER TEMPERATURE_VALUE(59.0) // 低温恢复阈值，根据NTC曲线设定
+#define FAULT_OVER_TEMPERATURE_TIME (500)						// NTC过温保护时间 单位：ms
+#define FAULT_LOWER_TEMPERATURE_TIME (500)						// NTC低温保护时间 单位：ms
+#define FAULT_RECOVER_TEMPERATURE_TIME (500)					// NTC保护恢复时间 单位：ms
 
 //===========================================================================//
-#endif	 /* __USER_CONTROL_H__ */
+#endif /* __USER_CONTROL_H__ */

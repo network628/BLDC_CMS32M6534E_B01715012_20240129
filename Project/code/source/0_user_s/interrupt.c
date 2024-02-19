@@ -402,6 +402,7 @@ void UART_VIEW(void)
 
 	{ // Convert number to string
 		sprintf(str, "Ref= %04d,RampOut= %04d,STATE= %04d,Power= %04d -\r\n", stru_FOC.Speed_Ref, stru_Speed_Ctrl.RampOut, MOTOR_STATE, Motor_Actual.Power);
+		// Basic.Calb_Speed
 		// Call the existing function to send the string
 		Printf((unsigned char *)str);
 		//	UartView(stru_FOC.Speed_Ref,stru_Speed_Ctrl.RampOut,MOTOR_STATE*1000,Motor_Actual.Power);
